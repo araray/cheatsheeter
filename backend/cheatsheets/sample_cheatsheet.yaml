@@ -1,0 +1,17 @@
+# cheatsheets/sample_cheatsheet.yaml
+
+title: Sample Cheat Sheet
+categories:
+  - name: Commands
+    items:
+      - command: ls -la
+        description: List all files with details
+      - command: pwd
+        description: Print working directory
+  - name: Shortcuts
+    items:
+      - command: Ctrl+C
+        description: Copy
+      - command: Ctrl+V
+        description: Paste
+

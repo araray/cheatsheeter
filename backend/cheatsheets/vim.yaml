@@ -1,0 +1,199 @@
+title: Vim Cheat Sheet
+categories:
+  - name: Basic Movement
+    items:
+      - command: h
+        description: Move cursor left
+      - command: j
+        description: Move cursor down
+      - command: k
+        description: Move cursor up
+      - command: l
+        description: Move cursor right
+      - command: w
+        description: Move to next word
+      - command: b
+        description: Move to previous word
+      - command: '0'
+        description: Move to beginning of the line
+      - command: '$'
+        description: Move to end of the line
+      - command: gg
+        description: Go to the first line of the file
+      - command: G
+        description: Go to the last line of the file
+      - command: ':number'
+        description: Go to line [number]
+  - name: Insert Mode
+    items:
+      - command: i
+        description: Insert before the cursor
+      - command: I
+        description: Insert at the beginning of the line
+      - command: a
+        description: Append after the cursor
+      - command: A
+        description: Append at the end of the line
+      - command: o
+        description: Open a new line below
+      - command: O
+        description: Open a new line above
+      - command: ESC
+        description: Exit insert mode
+  - name: Editing Text
+    items:
+      - command: x
+        description: Delete character under the cursor
+      - command: X
+        description: Delete character before the cursor
+      - command: dd
+        description: Delete (cut) the current line
+      - command: yy
+        description: Yank (copy) the current line
+      - command: p
+        description: Paste after the cursor
+      - command: P
+        description: Paste before the cursor
+      - command: u
+        description: Undo the last action
+      - command: 'Ctrl+r'
+        description: Redo the last undone change
+      - command: dw
+        description: Delete word from cursor
+      - command: cw
+        description: Change (replace) word from cursor
+      - command: '~'
+        description: Switch case of character under cursor
+      - command: J
+        description: Join the next line to the current one
+  - name: Visual Mode
+    items:
+      - command: v
+        description: Start visual mode character-wise
+      - command: V
+        description: Start visual mode line-wise
+      - command: 'Ctrl+v'
+        description: Start visual block mode
+      - command: y
+        description: Yank (copy) selected text
+      - command: d
+        description: Delete selected text
+      - command: '>'
+        description: Indent selected text right
+      - command: '<'
+        description: Indent selected text left
+  - name: Searching and Replacing
+    items:
+      - command: '/pattern'
+        description: Search forward for 'pattern'
+      - command: '?pattern'
+        description: Search backward for 'pattern'
+      - command: n
+        description: Repeat search in same direction
+      - command: N
+        description: Repeat search in opposite direction
+      - command: ':%s/old/new/g'
+        description: Replace all occurrences of 'old' with 'new' in the file
+      - command: ':%s/old/new/gc'
+        description: Replace all occurrences with confirmation
+  - name: Working with Files
+    items:
+      - command: ':e filename'
+        description: Open 'filename' for editing
+      - command: ':w'
+        description: Save the current file
+      - command: ':w filename'
+        description: Save as 'filename'
+      - command: ':q'
+        description: Quit Vim
+      - command: ':wq'
+        description: Save and quit
+      - command: ':q!'
+        description: Quit without saving changes
+      - command: ':e!'
+        description: Reload file discarding changes
+  - name: Buffers and Windows
+    items:
+      - command: ':ls'
+        description: List open buffers
+      - command: ':b [number]'
+        description: Switch to buffer [number]
+      - command: ':bd [number]'
+        description: Delete buffer [number]
+      - command: ':split filename'
+        description: Split window and open 'filename'
+      - command: ':vsplit filename'
+        description: Vertical split with 'filename'
+      - command: 'Ctrl+w s'
+        description: Split window horizontally
+      - command: 'Ctrl+w v'
+        description: Split window vertically
+      - command: 'Ctrl+w w'
+        description: Switch between windows
+      - command: 'Ctrl+w q'
+        description: Close current window
+  - name: Tabs
+    items:
+      - command: ':tabnew filename'
+        description: Open 'filename' in a new tab
+      - command: gt
+        description: Move to next tab
+      - command: gT
+        description: Move to previous tab
+      - command: ':tabc'
+        description: Close current tab
+      - command: ':tabs'
+        description: List all open tabs
+  - name: Macros
+    items:
+      - command: 'qa'
+        description: Start recording macro into register 'a'
+      - command: q
+        description: Stop recording macro
+      - command: '@a'
+        description: Play macro from register 'a'
+      - command: '@@'
+        description: Replay last executed macro
+  - name: Marks
+    items:
+      - command: 'ma'
+        description: Set mark 'a' at current cursor position
+      - command: "'a"
+        description: Jump to line of mark 'a'
+      - command: '`a'
+        description: Jump to exact position of mark 'a'
+      - command: ':marks'
+        description: List all marks
+  - name: Registers
+    items:
+      - command: '":reg"'
+        description: Display contents of all registers
+      - command: '"ayy'
+        description: Yank current line into register 'a'
+      - command: '"ap'
+        description: Paste contents of register 'a'
+      - command: '"adw'
+        description: Delete word into register 'a'
+  - name: Miscellaneous
+    items:
+      - command: '.'
+        description: Repeat last change
+      - command: '%'
+        description: Jump to matching bracket
+      - command: ':help [topic]'
+        description: Open help for 'topic'
+      - command: ':set number'
+        description: Show line numbers
+      - command: ':set nonumber'
+        description: Hide line numbers
+      - command: ':set ignorecase'
+        description: Ignore case in searches
+      - command: ':set noignorecase'
+        description: Case-sensitive searches
+      - command: ':set incsearch'
+        description: Show search matches as you type
+      - command: ':set hlsearch'
+        description: Highlight search matches
+      - command: ':noh'
+        description: Remove search highlighting
+
