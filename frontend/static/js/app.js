@@ -179,7 +179,7 @@
 
             $('#empty-state').hide();
 
-            cheatsheets.forEach(function(name) {
+            cheatsheets.forEach((name) => {
                 const cardHtml = `
                     <div class="col-md-6 col-lg-4 cheatsheet-card" data-name="${name}">
                         <div class="card h-100 shadow-sm hover-shadow">
@@ -315,7 +315,7 @@
                 categoriesByColumn[i] = [];
             }
 
-            (cheatsheet.categories || []).forEach(function(category) {
+            (cheatsheet.categories || []).forEach((category) => {
                 const col = category.column || 1;
                 if (categoriesByColumn[col]) {
                     categoriesByColumn[col].push(category);
@@ -329,7 +329,7 @@
 
                 const $col = $(`<div class="col-md-${colWidth}"></div>`);
 
-                categories.forEach(function(category) {
+                categories.forEach((category) => {
                     const categoryHtml = self.renderCategoryCard(category);
                     $col.append(categoryHtml);
                 });
@@ -353,7 +353,7 @@
          * @returns {string} HTML string
          */
         renderCategoryCard: function(category) {
-            const items = (category.items || []).map(function(item) {
+            const items = (category.items || []).map((item) => {
                 return `
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between align-items-start">
@@ -433,7 +433,7 @@
             $('#cheatsheet-title-input').val(cheatsheet.data.title || '');
             $('#cheatsheet-columns').val(cheatsheet.data.columns || 1);
 
-            (cheatsheet.data.categories || []).forEach(function(category) {
+            (cheatsheet.data.categories || []).forEach((category) => {
                 self.addCategory(category);
             });
 
@@ -501,7 +501,7 @@
 
             // Add existing items if data provided
             if (data && data.items) {
-                data.items.forEach(function(item) {
+                data.items.forEach((item) => {
                     self.addItem(id, item);
                 });
             }
