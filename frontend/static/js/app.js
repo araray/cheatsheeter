@@ -354,6 +354,7 @@
          * @returns {string} HTML string
          */
         renderCategoryCard: function(category) {
+            const self = this;
             const items = (category.items || []).map((item) => {
                 return `
                     <li class="list-group-item">
