@@ -1,0 +1,135 @@
+/**
+ * forest.css
+ * Forest Theme for CheatSheeter
+ * Earthy greens inspired by nature
+ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #1b2d1b;
+    --bg-secondary: #2d4a2d;
+    --bg-tertiary: #3d5f3d;
+
+    /* Text Colors */
+    --text-primary: #e8f5e9;
+    --text-secondary: #a5d6a7;
+
+    /* Border Colors */
+    --border-color: #3d5f3d;
+
+    /* Shadows */
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.4);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.6);
+}
+
+body.theme-forest {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Navbar */
+body.theme-forest .navbar {
+    background: linear-gradient(135deg, #2e7d32 0%, #388e3c 100%) !important;
+}
+
+/* Cards */
+body.theme-forest .card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-forest .card-header {
+    background: linear-gradient(135deg, #3d5f3d 0%, #4a7c4a 100%) !important;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-forest .card-footer {
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* List Groups */
+body.theme-forest .list-group-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-forest .list-group-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Forms */
+body.theme-forest .form-control,
+body.theme-forest .form-select {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-forest .form-control:focus,
+body.theme-forest .form-select:focus {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: #66bb6a;
+}
+
+/* Code Blocks */
+body.theme-forest code {
+    background-color: var(--bg-tertiary);
+    color: #81c784;
+}
+
+/* Primary Elements */
+body.theme-forest .btn-primary {
+    background-color: #43a047;
+    border-color: #43a047;
+}
+
+body.theme-forest .btn-primary:hover {
+    background-color: #388e3c;
+    border-color: #388e3c;
+}
+
+body.theme-forest .text-primary {
+    color: #81c784 !important;
+}
+
+/* Footer */
+body.theme-forest .footer {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color);
+}
+
+/* Text Muted */
+body.theme-forest .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Buttons */
+body.theme-forest .btn-outline-secondary {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+body.theme-forest .btn-outline-secondary:hover {
+    background-color: var(--bg-tertiary);
+}
+
+body.theme-forest .btn-outline-danger {
+    color: #e57373;
+    border-color: #e57373;
+}
+
+body.theme-forest .btn-outline-danger:hover {
+    background-color: #e57373;
+    color: white;
+}
+
+/* Alerts */
+body.theme-forest .alert-success {
+    background-color: #2d5f2d;
+    color: #a5d6a7;
+    border-color: #43a047;
+}

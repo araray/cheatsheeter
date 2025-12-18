@@ -1,0 +1,185 @@
+/**
+ * main.css
+ * Main stylesheet for CheatSheeter
+ */
+
+/* CSS Variables (can be overridden by themes) */
+:root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
+    --transition-speed: 0.3s;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content should grow to push footer down */
+.container-fluid {
+    flex: 1;
+}
+
+/* Card Enhancements */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+}
+
+.hover-shadow:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Code Styling */
+code {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    background-color: var(--bg-tertiary);
+    font-size: 90%;
+}
+
+/* List Group Items */
+.list-group-item {
+    border-color: var(--border-color);
+    background-color: var(--bg-primary);
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: var(--bg-secondary);
+}
+
+/* Form Controls */
+.form-control, .form-select {
+    border-color: var(--border-color);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 252, 0.25);
+}
+
+/* Navbar Enhancements */
+.navbar {
+    box-shadow: var(--shadow-sm);
+}
+
+/* Button Enhancements */
+.btn {
+    transition: all 0.2s ease;
+}
+
+/* Empty State */
+#empty-state i {
+    opacity: 0.5;
+}
+
+/* Search Input */
+#search-input {
+    transition: border-color 0.2s ease;
+}
+
+/* Category Cards in View */
+.card-header h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Item Cards in Editor */
+.item-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.category-card {
+    background-color: var(--bg-primary);
+}
+
+/* Footer */
+.footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Loading Spinner */
+#loading-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: var(--shadow-md);
+}
+
+/* Alert Container */
+#alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9998;
+    max-width: 400px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .card {
+        margin-bottom: 1rem;
+    }
+
+    #alert-container {
+        left: 20px;
+        right: 20px;
+        max-width: none;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.view-container {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Print Styles */
+@media print {
+    .navbar, .footer, .btn, #alert-container, #loading-spinner {
+        display: none !important;
+    }
+
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}

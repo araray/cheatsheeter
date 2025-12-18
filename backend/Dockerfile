@@ -1,34 +1,46 @@
-# Use an official Python runtime as a parent image
+# Backend Dockerfile
 FROM python:3.11-slim
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Install build dependencies
+# Install system dependencies
 RUN apt-get update && \
-    apt-get install -y build-essential && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements file into the container
+# Copy requirements first for better caching
 COPY requirements.txt .
 
-# Install the required Python packages
-RUN pip install --no-cache-dir -r requirements.txt
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
+# Copy application code
 COPY . .
 
-# Expose the port the app runs on
+# Create cheatsheets directory
+RUN mkdir -p /app/cheatsheets
+
+# Create non-root user for security
+RUN useradd -m -u 1000 appuser && \
+    chown -R appuser:appuser /app
+
+# Switch to non-root user
+USER appuser
+
+# Expose port
 EXPOSE 5000
 
-# Set environment variables
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_ENV=production
-ENV CHEATSHEETS_FOLDER=/app/cheatsheets
+# Environment variables
+ENV FLASK_APP=app.py \
+    FLASK_ENV=production \
+    PYTHONUNBUFFERED=1
 
-# Create the cheatsheets directory
-RUN mkdir -p $CHEATSHEETS_FOLDER
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import requests; requests.get('http://localhost:5000/api/health')" || exit 1
 
-# Run the application
-CMD ["flask", "run"]
+# Run with gunicorn for production
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-", "app:app"]

@@ -1,0 +1,141 @@
+/**
+ * sunset.css
+ * Sunset Theme for CheatSheeter
+ * Warm oranges and purples inspired by sunset
+ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #2d1b1b;
+    --bg-secondary: #4a2d2d;
+    --bg-tertiary: #5f3d3d;
+
+    /* Text Colors */
+    --text-primary: #ffe8e8;
+    --text-secondary: #ffb3a7;
+
+    /* Border Colors */
+    --border-color: #5f3d3d;
+
+    /* Shadows */
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.4);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.6);
+}
+
+body.theme-sunset {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Navbar */
+body.theme-sunset .navbar {
+    background: linear-gradient(135deg, #d84315 0%, #ff6f00 100%) !important;
+}
+
+/* Cards */
+body.theme-sunset .card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-sunset .card-header {
+    background: linear-gradient(135deg, #5f3d3d 0%, #7c4d4d 100%) !important;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-sunset .card-footer {
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* List Groups */
+body.theme-sunset .list-group-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-sunset .list-group-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Forms */
+body.theme-sunset .form-control,
+body.theme-sunset .form-select {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-sunset .form-control:focus,
+body.theme-sunset .form-select:focus {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: #ff8a65;
+}
+
+/* Code Blocks */
+body.theme-sunset code {
+    background-color: var(--bg-tertiary);
+    color: #ffab91;
+}
+
+/* Primary Elements */
+body.theme-sunset .btn-primary {
+    background-color: #ff5722;
+    border-color: #ff5722;
+}
+
+body.theme-sunset .btn-primary:hover {
+    background-color: #f4511e;
+    border-color: #f4511e;
+}
+
+body.theme-sunset .text-primary {
+    color: #ff8a65 !important;
+}
+
+/* Footer */
+body.theme-sunset .footer {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color);
+}
+
+/* Text Muted */
+body.theme-sunset .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Buttons */
+body.theme-sunset .btn-outline-secondary {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+body.theme-sunset .btn-outline-secondary:hover {
+    background-color: var(--bg-tertiary);
+}
+
+body.theme-sunset .btn-outline-danger {
+    color: #ef5350;
+    border-color: #ef5350;
+}
+
+body.theme-sunset .btn-outline-danger:hover {
+    background-color: #ef5350;
+    color: white;
+}
+
+/* Alerts */
+body.theme-sunset .alert-warning {
+    background-color: #5f4d1e;
+    color: #ffd089;
+    border-color: #ff8f00;
+}
+
+body.theme-sunset .alert-danger {
+    background-color: #5f1e1e;
+    color: #ffa3a3;
+    border-color: #e53935;
+}

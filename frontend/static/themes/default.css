@@ -1,0 +1,27 @@
+/**
+ * default.css
+ * Default (Light) Theme for CheatSheeter
+ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+
+    /* Text Colors */
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+
+    /* Border Colors */
+    --border-color: #dee2e6;
+
+    /* Shadows */
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+body.theme-default {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}

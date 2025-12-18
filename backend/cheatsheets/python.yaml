@@ -1,213 +1,174 @@
-title: Python Cheat Sheet
+title: Python Quick Reference
 columns: 3
 categories:
   - name: Basics
     column: 1
     items:
-      - command: "python my_script.py"
-        description: Run a Python script
-      - command: "python -m module_name"
-        description: Run a module as a script
-      - command: "print('Hello, World!')"
-        description: Print to the console
+      - command: "print('Hello')"
+        description: "Print to console"
       - command: "type(variable)"
-        description: Get the type of a variable
-      - command: "isinstance(obj, cls)"
-        description: Check if an object is an instance of a class
-      - command: "help(obj)"
-        description: Get documentation for an object
+        description: "Get variable type"
+      - command: "len(collection)"
+        description: "Get length/size"
+      - command: "help(function)"
+        description: "Get help documentation"
+      - command: "dir(object)"
+        description: "List object attributes"
 
-  - name: Data Types
+  - name: Variables & Types
     column: 1
     items:
-      - command: "int, float, str, bool"
-        description: Basic data types
-      - command: "list, tuple, dict, set"
-        description: Collection data types
-      - command: "None"
-        description: Represents a null value
-      - command: "complex"
-        description: Complex number type
+      - command: "x = 10"
+        description: "Integer assignment"
+      - command: "name = 'John'"
+        description: "String assignment"
+      - command: "pi = 3.14"
+        description: "Float assignment"
+      - command: "is_active = True"
+        description: "Boolean assignment"
+      - command: "items = [1, 2, 3]"
+        description: "List creation"
+      - command: "data = {'key': 'value'}"
+        description: "Dictionary creation"
 
-  - name: Operators
+  - name: Strings
     column: 1
     items:
-      - command: "+, -, *, /, //, %"
-        description: Arithmetic operators
-      - command: "and, or, not"
-        description: Logical operators
-      - command: "==, !=, >, <, >=, <="
-        description: Comparison operators
-      - command: "is, is not"
-        description: Identity operators
-      - command: "in, not in"
-        description: Membership operators
+      - command: "text.upper()"
+        description: "Convert to uppercase"
+      - command: "text.lower()"
+        description: "Convert to lowercase"
+      - command: "text.strip()"
+        description: "Remove whitespace"
+      - command: "text.split(',')"
+        description: "Split into list"
+      - command: "'-'.join(list)"
+        description: "Join list to string"
+      - command: "f'{var} text'"
+        description: "F-string formatting"
+
+  - name: Lists
+    column: 2
+    items:
+      - command: "list.append(item)"
+        description: "Add item to end"
+      - command: "list.insert(index, item)"
+        description: "Insert at position"
+      - command: "list.remove(item)"
+        description: "Remove first occurrence"
+      - command: "list.pop(index)"
+        description: "Remove and return item"
+      - command: "list.sort()"
+        description: "Sort in place"
+      - command: "sorted(list)"
+        description: "Return sorted copy"
+      - command: "list[start:end]"
+        description: "Slice list"
+
+  - name: Dictionaries
+    column: 2
+    items:
+      - command: "dict['key'] = value"
+        description: "Set key-value pair"
+      - command: "dict.get('key', default)"
+        description: "Get with default"
+      - command: "dict.keys()"
+        description: "Get all keys"
+      - command: "dict.values()"
+        description: "Get all values"
+      - command: "dict.items()"
+        description: "Get key-value pairs"
+      - command: "'key' in dict"
+        description: "Check key exists"
 
   - name: Control Flow
-    column: 1
+    column: 2
     items:
-      - command: |
-          if condition:
-              # code
-          elif another_condition:
-              # code
-          else:
-              # code
-        description: Conditional statements
-      - command: |
-          for item in iterable:
-              # code
-        description: For loop
-      - command: |
-          while condition:
-              # code
-        description: While loop
-      - command: "break, continue, pass"
-        description: Loop control statements
+      - command: "if condition:"
+        description: "Conditional statement"
+      - command: "elif other:"
+        description: "Else if condition"
+      - command: "else:"
+        description: "Default case"
+      - command: "for item in list:"
+        description: "Iterate over list"
+      - command: "while condition:"
+        description: "Loop while true"
+      - command: "break"
+        description: "Exit loop"
+      - command: "continue"
+        description: "Skip to next iteration"
 
   - name: Functions
-    column: 2
-    items:
-      - command: |
-          def function_name(params):
-              # code
-              return value
-        description: Define a function
-      - command: "lambda x: x + 1"
-        description: Anonymous function
-      - command: "def func(*args):"
-        description: Function with variable positional arguments
-      - command: "def func(**kwargs):"
-        description: Function with keyword arguments
-      - command: "global var"
-        description: Declare a global variable
-      - command: "nonlocal var"
-        description: Use a non-local variable in nested functions
-
-  - name: Collections
-    column: 2
-    items:
-      - command: "[1, 2, 3]"
-        description: List
-      - command: "(1, 2, 3)"
-        description: Tuple
-      - command: "{'key': 'value'}"
-        description: Dictionary
-      - command: "{1, 2, 3}"
-        description: Set
-      - command: "list.append(x)"
-        description: Add an item to a list
-      - command: "list.pop(i)"
-        description: Remove an item from a list by index
-      - command: "dict.get(key)"
-        description: Get a value from a dictionary
-
-  - name: File Handling
-    column: 2
-    items:
-      - command: |
-          with open('file.txt', 'r') as file:
-              data = file.read()
-        description: Read from a file
-      - command: |
-          with open('file.txt', 'w') as file:
-              file.write('content')
-        description: Write to a file
-      - command: "file.readlines()"
-        description: Read all lines from a file as a list
-      - command: "file.readline()"
-        description: Read the next line from a file
-
-  - name: Exception Handling
-    column: 2
-    items:
-      - command: |
-          try:
-              # code
-          except Exception as e:
-              # handle exception
-          else:
-              # code if no exceptions
-          finally:
-              # cleanup code
-        description: Exception handling structure
-      - command: "raise Exception('Error')"
-        description: Raise an exception
-      - command: "assert condition, 'Error'"
-        description: Assert statement
-
-  - name: Modules
     column: 3
     items:
-      - command: "import module"
-        description: Import a module
-      - command: "from module import function"
-        description: Import specific function from a module
-      - command: "import module as alias"
-        description: Import a module with an alias
-      - command: "dir(module)"
-        description: List all functions and attributes in a module
-
-  - name: Common Libraries
-    column: 3
-    items:
-      - command: "import os"
-        description: OS and file system operations
-      - command: "import sys"
-        description: Access system-specific parameters
-      - command: "import math"
-        description: Mathematical functions
-      - command: "import random"
-        description: Generate random numbers
-      - command: "import datetime"
-        description: Work with dates and times
-      - command: "import re"
-        description: Regular expressions
-
-  - name: Object-Oriented Programming
-    column: 3
-    items:
-      - command: |
-          class ClassName:
-              def __init__(self, args):
-                  # initializer
-        description: Define a class
-      - command: "obj = ClassName(args)"
-        description: Create an object
-      - command: "class SubClass(ParentClass):"
-        description: Inherit from a parent class
-      - command: "super().__init__(args)"
-        description: Call a parent class's initializer
-      - command: "staticmethod"
-        description: Define a static method
-      - command: "classmethod"
-        description: Define a class method
-
-  - name: Decorators
-    column: 3
-    items:
+      - command: "def func(param):"
+        description: "Define function"
+      - command: "return value"
+        description: "Return from function"
+      - command: "lambda x: x * 2"
+        description: "Anonymous function"
+      - command: "func(*args)"
+        description: "Variable arguments"
+      - command: "func(**kwargs)"
+        description: "Keyword arguments"
       - command: "@decorator"
-        description: Apply a decorator to a function
-      - command: |
-          def decorator(func):
-              def wrapper(*args, **kwargs):
-                  # code
-                  return func(*args, **kwargs)
-              return wrapper
-        description: Create a decorator
+        description: "Apply decorator"
 
-  - name: Testing
+  - name: Classes
     column: 3
     items:
-      - command: "import unittest"
-        description: Unit testing library
-      - command: |
-          class TestClass(unittest.TestCase):
-              def test_method(self):
-                  self.assertEqual(actual, expected)
-        description: Define a test case
-      - command: "pytest test_file.py"
-        description: Run tests with pytest
-      - command: "assert condition"
-        description: Assert a condition in tests
+      - command: "class MyClass:"
+        description: "Define class"
+      - command: "def __init__(self):"
+        description: "Constructor method"
+      - command: "self.attribute"
+        description: "Instance attribute"
+      - command: "obj = MyClass()"
+        description: "Create instance"
+      - command: "class Child(Parent):"
+        description: "Inherit from parent"
+      - command: "@staticmethod"
+        description: "Static method decorator"
 
+  - name: File Operations
+    column: 3
+    items:
+      - command: "open('file.txt', 'r')"
+        description: "Open file for reading"
+      - command: "open('file.txt', 'w')"
+        description: "Open file for writing"
+      - command: "with open('file') as f:"
+        description: "Context manager"
+      - command: "f.read()"
+        description: "Read entire file"
+      - command: "f.readline()"
+        description: "Read single line"
+      - command: "f.write(text)"
+        description: "Write to file"
+
+  - name: Error Handling
+    column: 3
+    items:
+      - command: "try:"
+        description: "Begin try block"
+      - command: "except Exception as e:"
+        description: "Catch exception"
+      - command: "finally:"
+        description: "Always execute"
+      - command: "raise ValueError()"
+        description: "Raise exception"
+      - command: "assert condition"
+        description: "Assert statement"
+
+  - name: Comprehensions
+    column: 3
+    items:
+      - command: "[x*2 for x in list]"
+        description: "List comprehension"
+      - command: "{x:x*2 for x in list}"
+        description: "Dict comprehension"
+      - command: "{x*2 for x in list}"
+        description: "Set comprehension"
+      - command: "[x for x if x > 0]"
+        description: "With condition"

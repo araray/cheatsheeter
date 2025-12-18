@@ -1,0 +1,118 @@
+/**
+ * ocean.css
+ * Ocean Theme for CheatSheeter
+ * Deep blues and teals inspired by the ocean
+ */
+
+:root {
+    /* Background Colors */
+    --bg-primary: #0a1929;
+    --bg-secondary: #132f4c;
+    --bg-tertiary: #1e4976;
+
+    /* Text Colors */
+    --text-primary: #e3f2fd;
+    --text-secondary: #90caf9;
+
+    /* Border Colors */
+    --border-color: #1e4976;
+
+    /* Shadows */
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.4);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.6);
+}
+
+body.theme-ocean {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Navbar */
+body.theme-ocean .navbar {
+    background: linear-gradient(135deg, #006064 0%, #00838f 100%) !important;
+}
+
+/* Cards */
+body.theme-ocean .card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-ocean .card-header {
+    background: linear-gradient(135deg, #1e4976 0%, #2e5f8f 100%) !important;
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-ocean .card-footer {
+    background-color: var(--bg-tertiary) !important;
+}
+
+/* List Groups */
+body.theme-ocean .list-group-item {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-ocean .list-group-item:hover {
+    background-color: var(--bg-tertiary);
+}
+
+/* Forms */
+body.theme-ocean .form-control,
+body.theme-ocean .form-select {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+body.theme-ocean .form-control:focus,
+body.theme-ocean .form-select:focus {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: #29b6f6;
+}
+
+/* Code Blocks */
+body.theme-ocean code {
+    background-color: var(--bg-tertiary);
+    color: #4dd0e1;
+}
+
+/* Primary Elements */
+body.theme-ocean .btn-primary {
+    background-color: #0288d1;
+    border-color: #0288d1;
+}
+
+body.theme-ocean .btn-primary:hover {
+    background-color: #0277bd;
+    border-color: #0277bd;
+}
+
+body.theme-ocean .text-primary {
+    color: #4fc3f7 !important;
+}
+
+/* Footer */
+body.theme-ocean .footer {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--border-color);
+}
+
+/* Text Muted */
+body.theme-ocean .text-muted {
+    color: var(--text-secondary) !important;
+}
+
+/* Buttons */
+body.theme-ocean .btn-outline-secondary {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+body.theme-ocean .btn-outline-secondary:hover {
+    background-color: var(--bg-tertiary);
+}
