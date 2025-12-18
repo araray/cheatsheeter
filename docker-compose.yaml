@@ -1,16 +1,13 @@
-version: "3.8"
-
 services:
   backend:
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     container_name: cheatsheeter-backend
     ports:
       - "5000:5000"
     volumes:
       - ./backend/cheatsheets:/app/cheatsheets
-      - ./frontend:/app/frontend:ro
     environment:
       - FLASK_ENV=production
       - FLASK_HOST=0.0.0.0

@@ -24,9 +24,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize Flask app
 app = Flask(
-    __name__,
-    static_folder="../frontend/static",
-    template_folder="../frontend/templates",
+    __name__, static_folder="frontend/static", template_folder="frontend/templates"
 )
 app.config.from_object(config[os.environ.get("FLASK_ENV", "development")])
 
