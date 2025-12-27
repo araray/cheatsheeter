@@ -5,7 +5,7 @@ services:
       dockerfile: backend/Dockerfile
     container_name: cheatsheeter-backend
     ports:
-      - "5000:5000"
+      - "5001:5000"
     volumes:
       - ./backend/cheatsheets:/app/cheatsheets
     environment:

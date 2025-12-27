@@ -1,114 +1,85 @@
 /**
- * forest.css
- * Forest Theme for CheatSheeter - COMPREHENSIVE EDITION
+ * forest.css - FIXED VERSION (Following Working Pattern)
+ * Forest Theme for NoteForge
+ *
+ * This theme uses EXPLICIT HEX COLORS like the fixed dark/sunset/ocean themes
  * Natural, organic aesthetics inspired by ancient forests and woodland magic
- * Deep greens with bioluminescent fungi accents
+ *
+ * Color Palette:
+ * - Background:  #0d1b0d (deep forest) → #162816 → #1f3a1f → #284d28
+ * - Text:        #e8f5e9 (pale green), #a5d6a7 (light sage), #66bb6a (green text)
+ * - Accents:     Emerald #00c853, Jade #1de9b6, Lime #76ff03, Moss #43a047
+ *
+ * @version 3.0.0
  */
 
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 :root {
-    /* Background Colors - Forest Floor */
     --bg-primary: #0d1b0d;
     --bg-secondary: #162816;
     --bg-tertiary: #1f3a1f;
     --bg-quaternary: #284d28;
-    --bg-elevated: #14241a;
+    --bg-input: #1a3018;
+    --bg-hover: #2d5a2d;
+    --bg-card: #162816;
 
-    /* Text Colors */
     --text-primary: #e8f5e9;
     --text-secondary: #a5d6a7;
     --text-tertiary: #66bb6a;
     --text-muted: #388e3c;
 
-    /* Forest Accent Colors */
     --forest-emerald: #00c853;
     --forest-jade: #1de9b6;
     --forest-moss: #43a047;
     --forest-lime: #76ff03;
     --forest-sage: #558b2f;
 
-    /* Magical Glows */
-    --glow-emerald: 0 0 10px rgba(0, 200, 83, 0.6), 0 0 20px rgba(0, 200, 83, 0.4);
-    --glow-jade: 0 0 10px rgba(29, 233, 182, 0.6), 0 0 20px rgba(29, 233, 182, 0.4);
-    --glow-lime: 0 0 10px rgba(118, 255, 3, 0.6), 0 0 20px rgba(118, 255, 3, 0.4);
+    --border-color: #2d5a2d;
+    --border-color-hover: #3d7a3d;
 
-    /* Border Colors */
-    --border-color: #2d4a2d;
-    --border-glow: rgba(0, 200, 83, 0.5);
+    --shadow-sm: 0 2px 4px rgba(13, 27, 13, 0.5);
+    --shadow-md: 0 4px 8px rgba(13, 27, 13, 0.6);
+    --shadow-lg: 0 8px 16px rgba(13, 27, 13, 0.7);
+    --shadow-focus: 0 0 0 2px rgba(0, 200, 83, 0.4);
 
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(13,27,13,0.5);
-    --shadow-md: 0 4px 8px rgba(13,27,13,0.6);
-    --shadow-lg: 0 10px 20px rgba(13,27,13,0.7);
-    --shadow-xl: 0 20px 40px rgba(13,27,13,0.8);
+    --glow-emerald: 0 0 10px rgba(0, 200, 83, 0.5);
+    --glow-jade: 0 0 10px rgba(29, 233, 182, 0.5);
+    --glow-lime: 0 0 10px rgba(118, 255, 3, 0.5);
 }
 
 /* ============================================
-   BASE STYLES - Forest Atmosphere
+   BASE STYLES
    ============================================ */
-
 body.theme-forest {
-    background: radial-gradient(ellipse at center, #0d1b0d 0%, #050a05 100%);
-    color: var(--text-primary);
-    position: relative;
+    background: radial-gradient(ellipse at center, #162816 0%, #0d1b0d 100%);
+    color: #e8f5e9;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Dappled sunlight through trees */
+/* Subtle forest glow */
 body.theme-forest::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        radial-gradient(circle at 15% 40%, rgba(0,200,83,0.04) 0%, transparent 50%),
-        radial-gradient(circle at 85% 60%, rgba(29,233,182,0.03) 0%, transparent 50%),
-        radial-gradient(circle at 50% 10%, rgba(118,255,3,0.02) 0%, transparent 50%);
+    background:
+        radial-gradient(
+            circle at 15% 40%,
+            rgba(0, 200, 83, 0.04) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 85% 60%,
+            rgba(29, 233, 182, 0.03) 0%,
+            transparent 50%
+        );
     pointer-events: none;
     z-index: 0;
-    animation: forestBreeze 12s ease-in-out infinite;
-}
-
-@keyframes forestBreeze {
-    0%, 100% {
-        opacity: 0.4;
-        transform: translateX(0);
-    }
-    50% {
-        opacity: 0.7;
-        transform: translateX(2%);
-    }
-}
-
-/* Fireflies / Glowworms */
-body.theme-forest::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(2px 2px at 25% 35%, rgba(118,255,3,0.9), transparent),
-        radial-gradient(1px 1px at 65% 25%, rgba(0,200,83,0.7), transparent),
-        radial-gradient(2px 2px at 85% 55%, rgba(29,233,182,0.8), transparent),
-        radial-gradient(1px 1px at 45% 75%, rgba(118,255,3,0.6), transparent),
-        radial-gradient(2px 2px at 10% 65%, rgba(0,200,83,0.8), transparent);
-    background-size: 300% 300%;
-    pointer-events: none;
-    z-index: 0;
-    animation: fireflyDance 15s ease-in-out infinite;
-}
-
-@keyframes fireflyDance {
-    0%, 100% {
-        background-position: 0% 0%;
-        opacity: 0.6;
-    }
-    50% {
-        background-position: 100% 100%;
-        opacity: 0.9;
-    }
 }
 
 body.theme-forest .container-fluid {
@@ -116,536 +87,593 @@ body.theme-forest .container-fluid {
     z-index: 1;
 }
 
-/* Custom Scrollbar - Vine Style */
+/* ============================================
+   SCROLLBARS
+   ============================================ */
 body.theme-forest ::-webkit-scrollbar {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
 }
 
 body.theme-forest ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-left: 2px solid var(--forest-emerald);
+    background: #162816;
 }
 
 body.theme-forest ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--forest-emerald) 0%, var(--forest-jade) 50%, var(--forest-moss) 100%);
-    border-radius: 10px;
-    border: 2px solid var(--bg-secondary);
-    box-shadow: var(--glow-emerald);
+    background: #2d5a2d;
+    border-radius: 5px;
 }
 
 body.theme-forest ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--forest-lime) 0%, var(--forest-emerald) 50%, var(--forest-jade) 100%);
-    box-shadow: var(--glow-lime);
-}
-
-/* Selection - Moss highlight */
-body.theme-forest ::selection {
-    background: rgba(0, 200, 83, 0.4);
-    color: white;
-    text-shadow: var(--glow-emerald);
+    background: #3d7a3d;
 }
 
 /* ============================================
-   NAVBAR - Forest Canopy
+   NAVBAR
    ============================================ */
-
 body.theme-forest .navbar {
-    background: linear-gradient(135deg, #14241a 0%, #1f3a1f 100%) !important;
-    border-bottom: 3px solid var(--forest-emerald);
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(0, 200, 83, 0.3);
-    backdrop-filter: blur(20px);
-    position: relative;
-}
-
-body.theme-forest .navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(0,200,83,0.05), transparent);
-    animation: leafShadow 4s linear infinite;
-}
-
-@keyframes leafShadow {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    background: linear-gradient(135deg, #162816 0%, #1f3a1f 100%) !important;
+    border-bottom: 2px solid #00c853;
+    box-shadow: 0 4px 15px rgba(0, 200, 83, 0.2);
 }
 
 body.theme-forest .navbar-brand {
-    color: var(--text-primary) !important;
-    font-weight: 800;
-    font-size: 1.5rem;
-    text-shadow: var(--glow-emerald);
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 1;
-}
-
-body.theme-forest .navbar-brand::before {
-    content: '🌿';
-    margin-right: 8px;
-    animation: leafRustle 3s ease-in-out infinite;
-}
-
-body.theme-forest .navbar-brand::after {
-    content: '🌿';
-    margin-left: 8px;
-    animation: leafRustle 3s ease-in-out infinite reverse;
-}
-
-@keyframes leafRustle {
-    0%, 100% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
+    color: #e8f5e9 !important;
+    font-weight: 700;
 }
 
 body.theme-forest .navbar-brand:hover {
-    color: var(--forest-emerald) !important;
-    text-shadow: var(--glow-emerald);
-    transform: scale(1.05);
+    color: #00c853 !important;
 }
 
 body.theme-forest .navbar-brand i {
-    color: var(--forest-emerald);
-    text-shadow: var(--glow-emerald);
-    animation: growthPulse 2.5s ease-in-out infinite;
+    color: #00c853;
 }
 
-@keyframes growthPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-/* Nav Links - Branch Structure */
 body.theme-forest .nav-link {
-    color: var(--text-secondary) !important;
+    color: #a5d6a7 !important;
     font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
     padding: 0.5rem 1rem;
-}
-
-body.theme-forest .nav-link::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--forest-emerald), var(--forest-jade));
-    transition: all 0.4s ease;
-    transform: translateX(-50%);
-    box-shadow: var(--glow-emerald);
+    border-radius: 6px;
 }
 
 body.theme-forest .nav-link:hover {
-    color: var(--forest-emerald) !important;
-    text-shadow: var(--glow-emerald);
-}
-
-body.theme-forest .nav-link:hover::before {
-    width: 80%;
+    color: #e8f5e9 !important;
+    background: rgba(0, 200, 83, 0.15);
 }
 
 body.theme-forest .nav-link.active {
-    color: var(--forest-emerald) !important;
-    text-shadow: var(--glow-emerald);
-    background: rgba(0, 200, 83, 0.15);
-    border-radius: 0.5rem;
-    border: 1px solid var(--forest-emerald);
+    color: #00c853 !important;
+    background: rgba(0, 200, 83, 0.2);
+    text-shadow: 0 0 10px rgba(0, 200, 83, 0.5);
 }
 
-body.theme-forest .nav-link.active::before {
-    width: 80%;
+body.theme-forest .navbar-toggler {
+    border-color: #00c853;
 }
 
-/* Theme Selector */
-body.theme-forest #theme-select {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--forest-emerald);
-    color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    box-shadow: var(--glow-emerald);
-}
-
-body.theme-forest #theme-select:hover {
-    border-color: var(--forest-jade);
-    box-shadow: var(--glow-jade);
-    transform: translateY(-2px);
-}
-
-body.theme-forest #theme-select:focus {
-    border-color: var(--forest-emerald);
-    box-shadow: var(--glow-emerald);
-    outline: none;
+body.theme-forest .navbar-toggler-icon {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(80deg);
 }
 
 /* ============================================
-   CARDS - Woodland Panels
+   THEME SELECTOR
    ============================================ */
+body.theme-forest #theme-select {
+    background: #1a3018;
+    border: 2px solid #00c853;
+    color: #e8f5e9;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 200, 83, 0.3);
+}
 
+body.theme-forest #theme-select:focus {
+    border-color: #1de9b6;
+    box-shadow: 0 0 0 2px rgba(29, 233, 182, 0.4);
+}
+
+body.theme-forest #theme-select option {
+    background: #162816;
+    color: #e8f5e9;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
 body.theme-forest .card {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    border: 2px solid var(--border-color);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-md), inset 0 0 30px rgba(0, 200, 83, 0.05);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-body.theme-forest .card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(0,200,83,0.1) 0%, transparent 70%);
-    animation: mushroomGlow 6s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes mushroomGlow {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translate(5%, 5%) scale(1.05);
-        opacity: 0.6;
-    }
+    background: linear-gradient(135deg, #162816 0%, #1f3a1f 100%);
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(13, 27, 13, 0.5);
 }
 
 body.theme-forest .card:hover {
-    box-shadow: var(--shadow-lg), var(--glow-emerald), inset 0 0 40px rgba(0, 200, 83, 0.1);
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--forest-emerald);
+    border-color: #00c853;
+    box-shadow:
+        0 8px 16px rgba(13, 27, 13, 0.6),
+        0 0 15px rgba(0, 200, 83, 0.2);
 }
 
+/* Card Header - EXPLICIT COLORS */
 body.theme-forest .card-header {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%) !important;
-    border-bottom: 2px solid var(--forest-emerald);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #1f3a1f 0%, #284d28 100%) !important;
+    border-bottom: 2px solid #00c853;
+    color: #e8f5e9;
     font-weight: 700;
-    box-shadow: 0 5px 20px rgba(0, 200, 83, 0.2);
-    position: relative;
-}
-
-body.theme-forest .card-header::before {
-    content: '❈';
-    color: var(--forest-emerald);
-    margin-right: 10px;
-    animation: petalRotate 4s linear infinite;
-}
-
-@keyframes petalRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    padding: 0.875rem 1rem;
 }
 
 body.theme-forest .card-header h5 {
     margin: 0;
-    text-shadow: 0 0 10px rgba(0, 200, 83, 0.4);
+    color: #e8f5e9;
+}
+
+body.theme-forest .card-header h6 {
+    margin: 0;
+    color: #e8f5e9;
+}
+
+body.theme-forest .card-header i {
+    color: #00c853;
+}
+
+body.theme-forest .card-body {
+    padding: 1rem;
 }
 
 body.theme-forest .card-footer {
-    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%) !important;
-    border-top: 2px solid rgba(0, 200, 83, 0.3);
-    box-shadow: 0 -5px 20px rgba(0, 200, 83, 0.15);
+    background: linear-gradient(135deg, #14241a 0%, #1f3a1f 100%) !important;
+    border-top: 1px solid #2d5a2d;
 }
 
 body.theme-forest .card-title {
-    color: var(--forest-emerald);
+    color: #00c853;
     font-weight: 700;
-    text-shadow: var(--glow-emerald);
 }
 
 body.theme-forest .card-text {
-    color: var(--text-secondary);
+    color: #a5d6a7;
 }
 
 body.theme-forest .hover-shadow:hover {
-    box-shadow: var(--shadow-xl), var(--glow-emerald);
+    box-shadow:
+        0 10px 20px rgba(13, 27, 13, 0.7),
+        0 0 20px rgba(0, 200, 83, 0.3);
 }
 
 /* ============================================
-   BUTTONS - Organic Elements
+   BUTTONS
    ============================================ */
+body.theme-forest .btn {
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
 
-/* Primary Button - Emerald Glow */
 body.theme-forest .btn-primary {
-    background: linear-gradient(135deg, var(--forest-emerald) 0%, var(--forest-moss) 100%);
-    border: 2px solid var(--forest-emerald);
-    color: white;
-    font-weight: 700;
-    box-shadow: var(--glow-emerald);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-body.theme-forest .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-body.theme-forest .btn-primary:hover::before {
-    width: 300px;
-    height: 300px;
+    background: linear-gradient(135deg, #00c853 0%, #43a047 100%);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 200, 83, 0.4);
 }
 
 body.theme-forest .btn-primary:hover {
-    background: linear-gradient(135deg, var(--forest-jade) 0%, var(--forest-emerald) 100%);
-    border-color: var(--forest-jade);
-    box-shadow: var(--glow-jade);
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, #1de9b6 0%, #00c853 100%);
+    box-shadow: 0 0 20px rgba(0, 200, 83, 0.6);
+    transform: translateY(-2px);
 }
 
-body.theme-forest .btn-primary:active {
-    transform: translateY(0);
-}
-
-/* Secondary Button */
 body.theme-forest .btn-secondary {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
-    border: 2px solid var(--forest-moss);
-    color: var(--text-primary);
-    font-weight: 700;
-    box-shadow: 0 0 15px rgba(67, 160, 71, 0.4);
-    transition: all 0.3s ease;
+    background: #1f3a1f;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
 }
 
 body.theme-forest .btn-secondary:hover {
-    background: var(--bg-quaternary);
-    border-color: var(--forest-emerald);
-    box-shadow: var(--glow-emerald);
-    color: var(--forest-emerald);
+    background: #2d5a2d;
+    border-color: #00c853;
 }
 
-/* Outline Buttons */
-body.theme-forest .btn-outline-primary {
-    color: var(--forest-emerald);
-    border: 2px solid var(--forest-emerald);
-    background: transparent;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-body.theme-forest .btn-outline-primary:hover {
-    background: var(--forest-emerald);
-    color: white;
-    box-shadow: var(--glow-emerald);
-    transform: scale(1.05);
-}
-
-body.theme-forest .btn-outline-secondary {
-    color: var(--forest-moss);
-    border: 2px solid var(--forest-moss);
-    background: transparent;
-    font-weight: 700;
-}
-
-body.theme-forest .btn-outline-secondary:hover {
-    background: var(--forest-moss);
-    color: white;
-    box-shadow: 0 0 20px rgba(67, 160, 71, 0.6);
-}
-
-body.theme-forest .btn-outline-danger {
-    color: #ff6b6b;
-    border: 2px solid #ff6b6b;
-    background: transparent;
-    font-weight: 700;
-}
-
-body.theme-forest .btn-outline-danger:hover {
-    background: #ff6b6b;
-    color: white;
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.6);
-}
-
-body.theme-forest .btn-outline-success {
-    color: var(--forest-lime);
-    border: 2px solid var(--forest-lime);
-}
-
-body.theme-forest .btn-outline-success:hover {
-    background: var(--forest-lime);
+body.theme-forest .btn-success {
+    background: linear-gradient(135deg, #76ff03 0%, #00c853 100%);
+    border: none;
     color: #0d1b0d;
-    box-shadow: var(--glow-lime);
+    box-shadow: 0 0 10px rgba(118, 255, 3, 0.4);
 }
 
-/* Danger Button */
+body.theme-forest .btn-success:hover {
+    background: linear-gradient(135deg, #00c853 0%, #43a047 100%);
+    color: #ffffff;
+}
+
 body.theme-forest .btn-danger {
     background: linear-gradient(135deg, #e57373 0%, #c62828 100%);
-    border: 2px solid #e57373;
-    font-weight: 700;
-    box-shadow: 0 0 20px rgba(229, 115, 115, 0.4);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(229, 115, 115, 0.4);
 }
 
 body.theme-forest .btn-danger:hover {
     background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
-    box-shadow: 0 0 30px rgba(229, 115, 115, 0.6);
 }
 
-/* Success Button */
-body.theme-forest .btn-success {
-    background: linear-gradient(135deg, var(--forest-lime) 0%, var(--forest-emerald) 100%);
-    border: 2px solid var(--forest-lime);
-    color: #0d1b0d;
-    font-weight: 700;
-    box-shadow: var(--glow-lime);
+/* Outline buttons */
+body.theme-forest .btn-outline-primary {
+    color: #00c853;
+    border-color: #00c853;
+    background: transparent;
 }
 
-body.theme-forest .btn-success:hover {
-    background: linear-gradient(135deg, var(--forest-emerald) 0%, var(--forest-moss) 100%);
-    box-shadow: var(--glow-emerald);
-    color: white;
+body.theme-forest .btn-outline-primary:hover {
+    background: rgba(0, 200, 83, 0.15);
+    color: #00c853;
+    box-shadow: 0 0 15px rgba(0, 200, 83, 0.3);
+}
+
+body.theme-forest .btn-outline-secondary {
+    color: #43a047;
+    border-color: #43a047;
+    background: transparent;
+}
+
+body.theme-forest .btn-outline-secondary:hover {
+    background: rgba(67, 160, 71, 0.15);
+    color: #43a047;
+}
+
+body.theme-forest .btn-outline-danger {
+    color: #e57373;
+    border-color: #e57373;
+    background: transparent;
+}
+
+body.theme-forest .btn-outline-danger:hover {
+    background: rgba(229, 115, 115, 0.15);
+}
+
+body.theme-forest .btn-outline-success {
+    color: #76ff03;
+    border-color: #76ff03;
+    background: transparent;
+}
+
+body.theme-forest .btn-outline-success:hover {
+    background: rgba(118, 255, 3, 0.15);
+}
+
+body.theme-forest .btn-outline-info {
+    color: #1de9b6;
+    border-color: #1de9b6;
+    background: transparent;
+}
+
+body.theme-forest .btn-outline-info:hover {
+    background: rgba(29, 233, 182, 0.15);
 }
 
 /* ============================================
-   FORMS - Natural Inputs
+   FORMS - EXPLICIT COLORS (CRITICAL)
    ============================================ */
-
 body.theme-forest .form-control,
 body.theme-forest .form-select {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--border-color);
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    font-weight: 500;
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+    transition: all 0.2s ease;
 }
 
 body.theme-forest .form-control:focus,
 body.theme-forest .form-select:focus {
-    background: var(--bg-quaternary);
-    border-color: var(--forest-emerald);
-    color: var(--text-primary);
-    box-shadow: var(--glow-emerald);
+    background: #1a3018;
+    border-color: #00c853;
+    color: #e8f5e9;
+    box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.3);
 }
 
 body.theme-forest .form-control::placeholder {
-    color: var(--text-tertiary);
-    font-style: italic;
+    color: #388e3c;
 }
 
+/* Form Labels - EXPLICIT COLOR */
 body.theme-forest .form-label {
-    color: var(--forest-emerald);
-    font-weight: 700;
+    color: #e8f5e9;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 body.theme-forest .form-text {
-    color: var(--text-tertiary);
-    font-style: italic;
+    color: #66bb6a;
 }
 
-/* Search Input */
+/* ============================================
+   NOTE TITLE - EXPLICIT COLORS
+   ============================================ */
+body.theme-forest #note-title {
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+body.theme-forest #note-title::placeholder {
+    color: #388e3c;
+}
+
+body.theme-forest #note-title:focus {
+    border-color: #00c853;
+    color: #e8f5e9;
+    box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.3);
+}
+
+/* ============================================
+   NOTE EDITOR - CRITICAL: EXPLICIT COLORS
+   ============================================ */
+body.theme-forest #note-editor {
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+    font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 1rem;
+    border-radius: 6px;
+    caret-color: #00c853;
+}
+
+body.theme-forest #note-editor:focus {
+    border-color: #00c853;
+    color: #e8f5e9;
+    box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.3);
+}
+
+body.theme-forest #note-editor::placeholder {
+    color: #388e3c;
+}
+
+/* ============================================
+   SEARCH INPUT
+   ============================================ */
 body.theme-forest #search-input {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--forest-emerald);
-    color: var(--text-primary);
-    border-radius: 0.5rem 0 0 0.5rem;
-    box-shadow: var(--glow-emerald);
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
 }
 
 body.theme-forest #search-input:focus {
-    border-color: var(--forest-jade);
-    box-shadow: var(--glow-jade);
+    border-color: #00c853;
+    box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.3);
 }
 
 body.theme-forest .input-group-text {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--forest-emerald);
-    border-left: none;
-    color: var(--forest-emerald);
+    background: #1f3a1f;
+    border: 1px solid #2d5a2d;
+    color: #66bb6a;
 }
 
 /* ============================================
-   LIST GROUPS - Forest Floor
+   SIDEBAR METADATA FIELDS - EXPLICIT
    ============================================ */
+body.theme-forest #note-status,
+body.theme-forest #note-priority,
+body.theme-forest #note-category,
+body.theme-forest #tag-input {
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+}
 
+body.theme-forest #note-status:focus,
+body.theme-forest #note-priority:focus,
+body.theme-forest #note-category:focus,
+body.theme-forest #tag-input:focus {
+    border-color: #00c853;
+    box-shadow: 0 0 0 2px rgba(0, 200, 83, 0.3);
+}
+
+body.theme-forest #note-status option,
+body.theme-forest #note-priority option {
+    background: #162816;
+    color: #e8f5e9;
+}
+
+/* ============================================
+   FILTER FIELDS
+   ============================================ */
+body.theme-forest #filter-status,
+body.theme-forest #filter-priority,
+body.theme-forest #filter-category,
+body.theme-forest #filter-date-from,
+body.theme-forest #filter-date-to,
+body.theme-forest #sort-select {
+    background: #1a3018;
+    border: 1px solid #2d5a2d;
+    color: #e8f5e9;
+}
+
+body.theme-forest #filter-status option,
+body.theme-forest #filter-priority option,
+body.theme-forest #sort-select option {
+    background: #162816;
+    color: #e8f5e9;
+}
+
+/* ============================================
+   ACTION BUTTONS IN SIDEBAR
+   ============================================ */
+body.theme-forest #duplicate-note-btn {
+    color: #43a047;
+    border-color: #2d5a2d;
+}
+
+body.theme-forest #duplicate-note-btn:hover {
+    background: #2d5a2d;
+    color: #e8f5e9;
+}
+
+body.theme-forest #delete-note-btn {
+    color: #e57373;
+    border-color: #e57373;
+}
+
+body.theme-forest #delete-note-btn:hover {
+    background: rgba(229, 115, 115, 0.15);
+}
+
+/* ============================================
+   LIST GROUPS
+   ============================================ */
 body.theme-forest .list-group-item {
-    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
-    border-left: 3px solid var(--forest-emerald);
-    color: var(--text-primary);
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #162816, #1f3a1f);
+    border: 1px solid #2d5a2d;
+    border-left: 3px solid #00c853;
+    color: #e8f5e9;
 }
 
 body.theme-forest .list-group-item:hover {
-    background: var(--bg-tertiary);
-    border-left-color: var(--forest-jade);
-    box-shadow: inset 5px 0 20px rgba(0, 200, 83, 0.2);
-    transform: translateX(10px);
+    background: #1f3a1f;
+    border-left-color: #1de9b6;
+    box-shadow: inset 5px 0 15px rgba(0, 200, 83, 0.2);
+}
+
+body.theme-forest .list-group-item.active {
+    background: rgba(0, 200, 83, 0.15);
+    border-color: #00c853;
+    color: #00c853;
 }
 
 body.theme-forest .list-group-item code {
-    background: var(--bg-quaternary);
-    border: 1px solid var(--forest-emerald);
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
-    font-size: 0.9em;
-    box-shadow: inset 0 0 10px rgba(0, 200, 83, 0.2);
+    background: #1f3a1f;
+    border: 1px solid #2d5a2d;
+    color: #76ff03;
 }
 
 /* ============================================
-   CODE BLOCKS - Terminal Moss
+   CODE BLOCKS
    ============================================ */
-
 body.theme-forest code {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
-    color: var(--forest-lime);
-    border: 1px solid var(--forest-emerald);
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
-    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
-    font-size: 0.9em;
-    box-shadow: inset 0 0 10px rgba(0, 200, 83, 0.2), var(--glow-emerald);
-    text-shadow: 0 0 5px rgba(118, 255, 3, 0.4);
+    background: #1f3a1f;
+    color: #76ff03;
+    border: 1px solid #2d5a2d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+body.theme-forest pre {
+    background: #1f3a1f;
+    border: 1px solid #2d5a2d;
+    border-left: 4px solid #00c853;
+    border-radius: 6px;
+    padding: 1rem;
 }
 
 body.theme-forest pre code {
-    display: block;
-    padding: 1.5rem;
-    overflow-x: auto;
-    border-left: 4px solid var(--forest-emerald);
+    background: transparent;
+    border: none;
+    color: #e8f5e9;
 }
 
 /* ============================================
-   TEXT COLORS
+   BADGES
    ============================================ */
+body.theme-forest .badge.bg-primary {
+    background: #00c853 !important;
+    color: #0d1b0d !important;
+}
 
+body.theme-forest .badge.bg-secondary {
+    background: #1f3a1f !important;
+    color: #a5d6a7 !important;
+    border: 1px solid #2d5a2d;
+}
+
+body.theme-forest .badge.bg-success {
+    background: #76ff03 !important;
+    color: #0d1b0d !important;
+}
+
+body.theme-forest .badge.bg-danger {
+    background: #e57373 !important;
+    color: #ffffff !important;
+}
+
+body.theme-forest .badge.bg-warning {
+    background: #ffd54f !important;
+    color: #0d1b0d !important;
+}
+
+body.theme-forest .badge.bg-info {
+    background: #1de9b6 !important;
+    color: #0d1b0d !important;
+}
+
+body.theme-forest .badge.bg-light {
+    background: #1f3a1f !important;
+    color: #e8f5e9 !important;
+}
+
+/* Tag badges */
+body.theme-forest #note-tags .badge {
+    background: rgba(0, 200, 83, 0.15);
+    color: #00c853;
+    border: 1px solid #00c853;
+}
+
+body.theme-forest #note-tags .badge:hover {
+    background: #00c853;
+    color: #0d1b0d;
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+body.theme-forest .alert-success {
+    background: rgba(118, 255, 3, 0.15);
+    border-color: #76ff03;
+    color: #76ff03;
+}
+
+body.theme-forest .alert-danger {
+    background: rgba(229, 115, 115, 0.15);
+    border-color: #e57373;
+    color: #e57373;
+}
+
+body.theme-forest .alert-warning {
+    background: rgba(255, 213, 79, 0.15);
+    border-color: #ffd54f;
+    color: #ffd54f;
+}
+
+body.theme-forest .alert-info {
+    background: rgba(29, 233, 182, 0.15);
+    border-color: #1de9b6;
+    color: #1de9b6;
+}
+
+body.theme-forest .btn-close {
+    filter: invert(1) brightness(0.9);
+}
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
 body.theme-forest .text-primary {
-    color: var(--forest-emerald) !important;
-    text-shadow: var(--glow-emerald);
+    color: #e8f5e9 !important;
 }
 
 body.theme-forest .text-secondary {
-    color: var(--text-secondary) !important;
+    color: #a5d6a7 !important;
 }
 
 body.theme-forest .text-muted {
-    color: var(--text-muted) !important;
+    color: #388e3c !important;
 }
 
 body.theme-forest .text-success {
-    color: var(--forest-lime) !important;
+    color: #76ff03 !important;
 }
 
 body.theme-forest .text-danger {
@@ -656,240 +684,318 @@ body.theme-forest .text-warning {
     color: #ffd54f !important;
 }
 
-/* ============================================
-   ALERTS - Nature Notifications
-   ============================================ */
-
-body.theme-forest .alert {
-    border: 2px solid;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-md);
-    font-weight: 600;
+body.theme-forest .text-info {
+    color: #1de9b6 !important;
 }
 
-body.theme-forest .alert-info {
-    background: linear-gradient(135deg, #0d1a1d 0%, #1a2a2d 100%);
-    color: var(--forest-jade);
-    border-color: var(--forest-jade);
-    box-shadow: var(--glow-jade);
-}
-
-body.theme-forest .alert-success {
-    background: linear-gradient(135deg, #0d1d0d 0%, #1a2d1a 100%);
-    color: var(--forest-lime);
-    border-color: var(--forest-lime);
-    box-shadow: var(--glow-lime);
-}
-
-body.theme-forest .alert-warning {
-    background: linear-gradient(135deg, #2a2d0a 0%, #3a3d1a 100%);
-    color: #ffd54f;
-    border-color: #ffd54f;
-    box-shadow: 0 0 20px rgba(255, 213, 79, 0.3);
-}
-
-body.theme-forest .alert-danger {
-    background: linear-gradient(135deg, #2d0d0d 0%, #3d1a1a 100%);
-    color: #e57373;
-    border-color: #e57373;
-    box-shadow: 0 0 20px rgba(229, 115, 115, 0.3);
-}
-
-body.theme-forest .alert .btn-close {
-    filter: invert(1) brightness(2);
+body.theme-forest .text-dark {
+    color: #a5d6a7 !important;
 }
 
 /* ============================================
-   FOOTER - Root System
+   DROPDOWNS
    ============================================ */
+body.theme-forest .dropdown-menu {
+    background: #162816;
+    border: 1px solid #2d5a2d;
+}
 
+body.theme-forest .dropdown-item {
+    color: #e8f5e9;
+}
+
+body.theme-forest .dropdown-item:hover {
+    background: #1f3a1f;
+}
+
+body.theme-forest .dropdown-divider {
+    border-color: #2d5a2d;
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+body.theme-forest .modal-content {
+    background: #162816;
+    border: 1px solid #2d5a2d;
+}
+
+body.theme-forest .modal-header {
+    border-bottom: 1px solid #2d5a2d;
+    color: #e8f5e9;
+}
+
+body.theme-forest .modal-title {
+    color: #e8f5e9;
+}
+
+body.theme-forest .modal-footer {
+    border-top: 1px solid #2d5a2d;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+body.theme-forest .table {
+    color: #e8f5e9;
+}
+
+body.theme-forest .table th {
+    background: #1f3a1f;
+    border-color: #2d5a2d;
+    color: #e8f5e9;
+}
+
+body.theme-forest .table td {
+    border-color: #2d5a2d;
+    color: #e8f5e9;
+}
+
+body.theme-forest .table-striped > tbody > tr:nth-of-type(odd) {
+    background: #162816;
+}
+
+body.theme-forest .table-hover > tbody > tr:hover {
+    background: #1f3a1f;
+}
+
+/* ============================================
+   NAV TABS & PILLS
+   ============================================ */
+body.theme-forest .nav-tabs {
+    border-color: #2d5a2d;
+}
+
+body.theme-forest .nav-tabs .nav-link {
+    color: #a5d6a7;
+}
+
+body.theme-forest .nav-tabs .nav-link:hover {
+    border-color: #3d7a3d;
+    color: #e8f5e9;
+}
+
+body.theme-forest .nav-tabs .nav-link.active {
+    background: #162816;
+    border-color: #2d5a2d #2d5a2d #162816;
+    color: #00c853;
+}
+
+body.theme-forest .nav-pills .nav-link {
+    color: #a5d6a7;
+}
+
+body.theme-forest .nav-pills .nav-link:hover {
+    background: #1f3a1f;
+    color: #e8f5e9;
+}
+
+body.theme-forest .nav-pills .nav-link.active {
+    background: #00c853;
+    color: #0d1b0d;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
 body.theme-forest .footer {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
-    border-top: 3px solid var(--forest-emerald);
-    color: var(--text-secondary);
-    box-shadow: var(--shadow-lg), 0 -10px 40px rgba(0, 200, 83, 0.2);
-    margin-top: 3rem;
+    background: linear-gradient(135deg, #162816 0%, #0d1b0d 100%) !important;
+    border-top: 2px solid #00c853;
+    color: #66bb6a;
 }
 
 body.theme-forest .footer a {
-    color: var(--forest-emerald);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
+    color: #00c853;
 }
 
 body.theme-forest .footer a:hover {
-    color: var(--forest-jade);
-    text-shadow: var(--glow-jade);
+    color: #1de9b6;
 }
 
 /* ============================================
-   LOADING SPINNER - Seed Growth
+   STATUS INDICATORS
    ============================================ */
+body.theme-forest #save-status {
+    color: #66bb6a;
+}
 
+body.theme-forest #save-status.text-success {
+    color: #76ff03 !important;
+}
+
+body.theme-forest #save-status.text-warning {
+    color: #ffd54f !important;
+}
+
+body.theme-forest #word-count,
+body.theme-forest #line-count,
+body.theme-forest #last-modified {
+    color: #388e3c;
+}
+
+/* ============================================
+   LOADING & EMPTY STATES
+   ============================================ */
 body.theme-forest #loading-spinner {
-    background: rgba(20, 40, 20, 0.98);
-    backdrop-filter: blur(20px);
-    border: 2px solid var(--forest-emerald);
-    box-shadow: var(--shadow-xl), var(--glow-emerald);
+    background: #162816;
+    border: 1px solid #2d5a2d;
 }
 
 body.theme-forest .spinner-border {
-    border: 4px solid rgba(0, 200, 83, 0.2);
-    border-right-color: var(--forest-emerald);
-    border-top-color: var(--forest-jade);
-    animation: spinnerGrow 1.5s ease-in-out infinite;
+    border-color: #2d5a2d;
+    border-right-color: #00c853;
 }
-
-@keyframes spinnerGrow {
-    0% {
-        border-right-color: var(--forest-emerald);
-        border-top-color: var(--forest-jade);
-    }
-    50% {
-        border-right-color: var(--forest-jade);
-        border-top-color: var(--forest-lime);
-    }
-    100% {
-        border-right-color: var(--forest-emerald);
-        border-top-color: var(--forest-jade);
-    }
-}
-
-/* ============================================
-   EMPTY STATES
-   ============================================ */
 
 body.theme-forest #empty-state i {
-    opacity: 0.4;
-    color: var(--forest-emerald);
-    text-shadow: var(--glow-emerald);
-    animation: sway 4s ease-in-out infinite;
-}
-
-@keyframes sway {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
+    color: #388e3c;
 }
 
 body.theme-forest #empty-state h3 {
-    color: var(--forest-emerald);
-    text-shadow: var(--glow-emerald);
+    color: #e8f5e9;
 }
 
 body.theme-forest #empty-state p {
-    color: var(--text-tertiary);
+    color: #66bb6a;
 }
 
 /* ============================================
-   BADGES
+   TAG CLOUD
    ============================================ */
-
-body.theme-forest .badge {
-    font-weight: 700;
-    padding: 0.4em 0.8em;
+body.theme-forest .tag-cloud-item {
+    color: #a5d6a7;
 }
 
-body.theme-forest .badge-primary {
-    background: var(--forest-emerald);
-    color: white;
-    box-shadow: var(--glow-emerald);
-}
-
-body.theme-forest .badge-secondary {
-    background: var(--forest-moss);
-    color: white;
-    box-shadow: 0 0 15px rgba(67, 160, 71, 0.4);
+body.theme-forest .tag-cloud-item:hover {
+    color: #00c853;
 }
 
 /* ============================================
-   TRANSITIONS & ANIMATIONS
+   SEARCH RESULTS
    ============================================ */
+body.theme-forest .search-result-card:hover {
+    border-color: #00c853;
+}
 
+body.theme-forest .search-result-card .card-title {
+    color: #00c853;
+}
+
+body.theme-forest mark,
+body.theme-forest .highlight {
+    background: rgba(118, 255, 3, 0.2);
+    color: #76ff03;
+}
+
+/* ============================================
+   FILTER BADGES
+   ============================================ */
+body.theme-forest [data-filter] {
+    color: #a5d6a7;
+}
+
+body.theme-forest [data-filter]:hover {
+    color: #00c853;
+}
+
+body.theme-forest [data-filter].active {
+    color: #00c853;
+    font-weight: 600;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+body.theme-forest .page-link {
+    background: #162816;
+    border-color: #2d5a2d;
+    color: #a5d6a7;
+}
+
+body.theme-forest .page-link:hover {
+    background: #1f3a1f;
+    color: #e8f5e9;
+}
+
+body.theme-forest .page-item.active .page-link {
+    background: #00c853;
+    border-color: #00c853;
+    color: #0d1b0d;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+body.theme-forest ::selection {
+    background: #00c853;
+    color: #0d1b0d;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
 body.theme-forest .view-container {
-    animation: sprout 0.7s ease;
+    animation: fadeIn 0.2s ease;
 }
 
-@keyframes sprout {
-    0% {
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: translateY(20px) scale(0.9);
+        transform: translateY(8px);
     }
-    60% {
-        opacity: 0.8;
-        transform: translateY(-3px) scale(1.02);
-    }
-    100% {
+    to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
 
 /* ============================================
-   CATEGORY CARDS
+   RESPONSIVE
    ============================================ */
-
-body.theme-forest .category-card {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    border: 2px solid var(--forest-moss);
-    transition: all 0.4s ease;
-}
-
-body.theme-forest .category-card:hover {
-    border-color: var(--forest-emerald);
-    box-shadow: var(--shadow-lg), var(--glow-emerald);
-    transform: scale(1.02);
-}
-
-body.theme-forest .item-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-color);
-    border-left: 3px solid var(--forest-emerald);
-    transition: all 0.3s ease;
-}
-
-body.theme-forest .item-card:hover {
-    border-left-color: var(--forest-jade);
-    box-shadow: inset 5px 0 15px rgba(0, 200, 83, 0.2);
-}
-
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
-
 @media (max-width: 768px) {
     body.theme-forest .navbar-brand {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
-
-    body.theme-forest .card {
-        margin-bottom: 1rem;
-    }
-
-    body.theme-forest::before,
-    body.theme-forest::after {
-        opacity: 0.5;
+    body.theme-forest #note-editor {
+        font-size: 13px;
     }
 }
 
 /* ============================================
-   PRINT STYLES
+   PRINT
    ============================================ */
-
 @media print {
     body.theme-forest {
         background: white;
         color: black;
     }
-
-    body.theme-forest::before,
-    body.theme-forest::after {
+    body.theme-forest::before {
         display: none;
     }
-
     body.theme-forest .navbar,
     body.theme-forest .footer,
     body.theme-forest .btn {
         display: none !important;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+body.theme-forest :focus-visible {
+    outline: 2px solid #00c853;
+    outline-offset: 2px;
+}
+
+@media (prefers-contrast: high) {
+    body.theme-forest {
+        --text-primary: #ffffff;
+        --text-secondary: #c8e6c9;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.theme-forest * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }

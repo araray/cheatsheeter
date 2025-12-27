@@ -1,25 +1,35 @@
 /**
- * sunset.css
- * Sunset Theme for CheatSheeter - COMPREHENSIVE EDITION
+ * sunset.css - FIXED VERSION (Following Working Pattern)
+ * Sunset Theme for NoteForge
+ *
+ * This theme uses EXPLICIT HEX COLORS like the fixed dark theme
  * Warm, cozy aesthetics inspired by golden hour and twilight
- * Rich oranges, purples, and deep reds with atmospheric glow
+ *
+ * Color Palette:
+ * - Background:  #1a0d0a (deep burgundy) → #2d1a14 → #4a2a1f
+ * - Text:        #ffe8e0 (warm cream), #ffb39d (peach), #ff8a65 (coral text)
+ * - Accents:     Orange #ff6d00, Coral #ff5252, Gold #ffab00, Amber #ff9100
+ *
+ * @version 3.0.0
  */
 
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
 :root {
-    /* Background Colors - Twilight Sky */
     --bg-primary: #1a0d0a;
     --bg-secondary: #2d1a14;
     --bg-tertiary: #4a2a1f;
     --bg-quaternary: #5f3a2d;
-    --bg-elevated: #241410;
+    --bg-input: #3a2218;
+    --bg-hover: #5a3525;
+    --bg-card: #2d1a14;
 
-    /* Text Colors */
     --text-primary: #ffe8e0;
     --text-secondary: #ffb39d;
     --text-tertiary: #ff8a65;
     --text-muted: #d84315;
 
-    /* Sunset Accent Colors */
     --sunset-orange: #ff6d00;
     --sunset-coral: #ff5252;
     --sunset-gold: #ffab00;
@@ -27,93 +37,50 @@
     --sunset-purple: #7c4dff;
     --sunset-pink: #f50057;
 
-    /* Atmospheric Glows */
-    --glow-orange: 0 0 10px rgba(255, 109, 0, 0.6), 0 0 20px rgba(255, 109, 0, 0.4);
-    --glow-coral: 0 0 10px rgba(255, 82, 82, 0.6), 0 0 20px rgba(255, 82, 82, 0.4);
-    --glow-gold: 0 0 10px rgba(255, 171, 0, 0.6), 0 0 20px rgba(255, 171, 0, 0.4);
-    --glow-purple: 0 0 10px rgba(124, 77, 255, 0.6), 0 0 20px rgba(124, 77, 255, 0.4);
+    --border-color: #5a3525;
+    --border-color-hover: #6d4535;
 
-    /* Border Colors */
-    --border-color: #4a2a1f;
-    --border-glow: rgba(255, 109, 0, 0.5);
+    --shadow-sm: 0 2px 4px rgba(26, 13, 10, 0.5);
+    --shadow-md: 0 4px 8px rgba(26, 13, 10, 0.6);
+    --shadow-lg: 0 8px 16px rgba(26, 13, 10, 0.7);
+    --shadow-focus: 0 0 0 2px rgba(255, 109, 0, 0.4);
 
-    /* Shadows */
-    --shadow-sm: 0 2px 4px rgba(26,13,10,0.5);
-    --shadow-md: 0 4px 8px rgba(26,13,10,0.6);
-    --shadow-lg: 0 10px 20px rgba(26,13,10,0.7);
-    --shadow-xl: 0 20px 40px rgba(26,13,10,0.8);
+    --glow-orange: 0 0 10px rgba(255, 109, 0, 0.5);
+    --glow-coral: 0 0 10px rgba(255, 82, 82, 0.5);
+    --glow-gold: 0 0 10px rgba(255, 171, 0, 0.5);
 }
 
 /* ============================================
-   BASE STYLES - Sunset Atmosphere
+   BASE STYLES
    ============================================ */
-
 body.theme-sunset {
     background: radial-gradient(ellipse at center, #2d1a14 0%, #1a0d0a 100%);
-    color: var(--text-primary);
-    position: relative;
+    color: #ffe8e0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-/* Sunset gradient overlay */
+/* Subtle warm overlay */
 body.theme-sunset::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background:
-        radial-gradient(circle at 80% 20%, rgba(255, 109, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 20% 60%, rgba(255, 82, 82, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 40%, rgba(124, 77, 255, 0.04) 0%, transparent 50%);
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 109, 0, 0.06) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 20% 60%,
+            rgba(255, 82, 82, 0.04) 0%,
+            transparent 50%
+        );
     pointer-events: none;
     z-index: 0;
-    animation: sunsetShift 15s ease-in-out infinite;
-}
-
-@keyframes sunsetShift {
-    0%, 100% {
-        opacity: 0.5;
-        transform: scale(1) rotate(0deg);
-    }
-    50% {
-        opacity: 0.8;
-        transform: scale(1.05) rotate(2deg);
-    }
-}
-
-/* Floating embers / dust particles */
-body.theme-sunset::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(2px 2px at 30% 40%, rgba(255, 171, 0, 0.8), transparent),
-        radial-gradient(1px 1px at 70% 30%, rgba(255, 109, 0, 0.6), transparent),
-        radial-gradient(2px 2px at 90% 70%, rgba(255, 82, 82, 0.7), transparent),
-        radial-gradient(1px 1px at 50% 80%, rgba(255, 171, 0, 0.5), transparent),
-        radial-gradient(2px 2px at 15% 60%, rgba(124, 77, 255, 0.6), transparent);
-    background-size: 250% 250%;
-    pointer-events: none;
-    z-index: 0;
-    animation: embersFloat 20s linear infinite;
-}
-
-@keyframes embersFloat {
-    0% {
-        background-position: 0% 0%;
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 0.9;
-    }
-    100% {
-        background-position: 100% 100%;
-        opacity: 0.6;
-    }
 }
 
 body.theme-sunset .container-fluid {
@@ -121,792 +88,915 @@ body.theme-sunset .container-fluid {
     z-index: 1;
 }
 
-/* Custom Scrollbar - Sunset Gradient */
+/* ============================================
+   SCROLLBARS
+   ============================================ */
 body.theme-sunset ::-webkit-scrollbar {
-    width: 14px;
-    height: 14px;
+    width: 10px;
+    height: 10px;
 }
 
 body.theme-sunset ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-    border-left: 2px solid var(--sunset-orange);
+    background: #2d1a14;
 }
 
 body.theme-sunset ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, var(--sunset-gold) 0%, var(--sunset-orange) 50%, var(--sunset-coral) 100%);
-    border-radius: 10px;
-    border: 2px solid var(--bg-secondary);
-    box-shadow: var(--glow-orange);
+    background: #5a3525;
+    border-radius: 5px;
 }
 
 body.theme-sunset ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, var(--sunset-coral) 0%, var(--sunset-pink) 50%, var(--sunset-purple) 100%);
-    box-shadow: var(--glow-coral);
-}
-
-/* Selection - Warm highlight */
-body.theme-sunset ::selection {
-    background: rgba(255, 109, 0, 0.4);
-    color: white;
-    text-shadow: var(--glow-orange);
+    background: #6d4535;
 }
 
 /* ============================================
-   NAVBAR - Horizon Line
+   NAVBAR
    ============================================ */
-
 body.theme-sunset .navbar {
-    background: linear-gradient(135deg, #241410 0%, #2d1a14 100%) !important;
-    border-bottom: 3px solid transparent;
-    border-image: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral)) 1;
-    box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 109, 0, 0.3);
-    backdrop-filter: blur(20px);
-    position: relative;
-}
-
-body.theme-sunset .navbar::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 109, 0, 0.1), transparent);
-    animation: horizonGlow 5s linear infinite;
-}
-
-@keyframes horizonGlow {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    background: linear-gradient(135deg, #2d1a14 0%, #4a2a1f 100%) !important;
+    border-bottom: 2px solid #ff6d00;
+    box-shadow: 0 4px 15px rgba(255, 109, 0, 0.2);
 }
 
 body.theme-sunset .navbar-brand {
-    color: var(--text-primary) !important;
-    font-weight: 800;
-    font-size: 1.5rem;
-    text-shadow: var(--glow-orange);
-    transition: all 0.4s ease;
-    position: relative;
-    z-index: 1;
-}
-
-body.theme-sunset .navbar-brand::before {
-    content: '☀';
-    color: var(--sunset-gold);
-    margin-right: 8px;
-    animation: sunPulse 3s ease-in-out infinite;
-}
-
-body.theme-sunset .navbar-brand::after {
-    content: '☾';
-    color: var(--sunset-purple);
-    margin-left: 8px;
-    animation: moonPulse 3s ease-in-out infinite;
-}
-
-@keyframes sunPulse {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
-    50% { transform: scale(1.15) rotate(15deg); opacity: 0.8; }
-}
-
-@keyframes moonPulse {
-    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
-    50% { transform: scale(1.1) rotate(-10deg); opacity: 1; }
+    color: #ffe8e0 !important;
+    font-weight: 700;
 }
 
 body.theme-sunset .navbar-brand:hover {
-    color: var(--sunset-orange) !important;
-    text-shadow: var(--glow-orange);
-    transform: scale(1.05);
+    color: #ff6d00 !important;
 }
 
 body.theme-sunset .navbar-brand i {
-    color: var(--sunset-orange);
-    text-shadow: var(--glow-orange);
-    animation: warmGlow 2.5s ease-in-out infinite;
+    color: #ff6d00;
 }
 
-@keyframes warmGlow {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.3); }
-}
-
-/* Nav Links - Twilight Transition */
 body.theme-sunset .nav-link {
-    color: var(--text-secondary) !important;
+    color: #ffb39d !important;
     font-weight: 600;
-    transition: all 0.3s ease;
-    position: relative;
     padding: 0.5rem 1rem;
-}
-
-body.theme-sunset .nav-link::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral));
-    transition: all 0.4s ease;
-    transform: translateX(-50%);
-    box-shadow: var(--glow-orange);
+    border-radius: 6px;
 }
 
 body.theme-sunset .nav-link:hover {
-    color: var(--sunset-orange) !important;
-    text-shadow: var(--glow-orange);
-}
-
-body.theme-sunset .nav-link:hover::before {
-    width: 80%;
+    color: #ffe8e0 !important;
+    background: rgba(255, 109, 0, 0.15);
 }
 
 body.theme-sunset .nav-link.active {
-    color: var(--sunset-orange) !important;
-    text-shadow: var(--glow-orange);
-    background: rgba(255, 109, 0, 0.15);
-    border-radius: 0.5rem;
-    border: 1px solid var(--sunset-orange);
+    color: #ff6d00 !important;
+    background: rgba(255, 109, 0, 0.2);
+    text-shadow: 0 0 10px rgba(255, 109, 0, 0.5);
 }
 
-body.theme-sunset .nav-link.active::before {
-    width: 80%;
+body.theme-sunset .navbar-toggler {
+    border-color: #ff6d00;
 }
 
-/* Theme Selector */
-body.theme-sunset #theme-select {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--sunset-orange);
-    color: var(--text-primary);
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    box-shadow: var(--glow-orange);
-}
-
-body.theme-sunset #theme-select:hover {
-    border-color: var(--sunset-coral);
-    box-shadow: var(--glow-coral);
-    transform: translateY(-2px);
-}
-
-body.theme-sunset #theme-select:focus {
-    border-color: var(--sunset-orange);
-    box-shadow: var(--glow-orange);
-    outline: none;
+body.theme-sunset .navbar-toggler-icon {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(-10deg);
 }
 
 /* ============================================
-   CARDS - Warm Panels
+   THEME SELECTOR
    ============================================ */
+body.theme-sunset #theme-select {
+    background: #3a2218;
+    border: 2px solid #ff6d00;
+    color: #ffe8e0;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(255, 109, 0, 0.3);
+}
 
+body.theme-sunset #theme-select:focus {
+    border-color: #ffab00;
+    box-shadow: 0 0 0 2px rgba(255, 171, 0, 0.4);
+}
+
+body.theme-sunset #theme-select option {
+    background: #2d1a14;
+    color: #ffe8e0;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
 body.theme-sunset .card {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    border: 2px solid var(--border-color);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-md), inset 0 0 30px rgba(255, 109, 0, 0.05);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-body.theme-sunset .card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 109, 0, 0.1) 0%, transparent 70%);
-    animation: fireLuminescence 7s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes fireLuminescence {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translate(8%, 8%) scale(1.08);
-        opacity: 0.6;
-    }
+    background: linear-gradient(135deg, #2d1a14 0%, #3a2218 100%);
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(26, 13, 10, 0.5);
 }
 
 body.theme-sunset .card:hover {
-    box-shadow: var(--shadow-lg), var(--glow-orange), inset 0 0 40px rgba(255, 109, 0, 0.1);
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--sunset-orange);
+    border-color: #ff6d00;
+    box-shadow:
+        0 8px 16px rgba(26, 13, 10, 0.6),
+        0 0 15px rgba(255, 109, 0, 0.2);
 }
 
+/* Card Header - EXPLICIT COLORS */
 body.theme-sunset .card-header {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%) !important;
-    border-bottom: 2px solid var(--sunset-orange);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #4a2a1f 0%, #5f3a2d 100%) !important;
+    border-bottom: 2px solid #ff6d00;
+    color: #ffe8e0;
     font-weight: 700;
-    box-shadow: 0 5px 20px rgba(255, 109, 0, 0.2);
-    position: relative;
-}
-
-body.theme-sunset .card-header::before {
-    content: '◈';
-    color: var(--sunset-gold);
-    margin-right: 10px;
-    animation: emberFlicker 2s ease-in-out infinite;
-}
-
-@keyframes emberFlicker {
-    0%, 100% { opacity: 0.7; filter: brightness(1); }
-    50% { opacity: 1; filter: brightness(1.4); }
+    padding: 0.875rem 1rem;
 }
 
 body.theme-sunset .card-header h5 {
     margin: 0;
-    text-shadow: 0 0 10px rgba(255, 109, 0, 0.4);
+    color: #ffe8e0;
+}
+
+body.theme-sunset .card-header h6 {
+    margin: 0;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .card-header i {
+    color: #ff6d00;
+}
+
+body.theme-sunset .card-body {
+    padding: 1rem;
 }
 
 body.theme-sunset .card-footer {
-    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-secondary) 100%) !important;
-    border-top: 2px solid rgba(255, 109, 0, 0.3);
-    box-shadow: 0 -5px 20px rgba(255, 109, 0, 0.15);
+    background: linear-gradient(135deg, #3a2218 0%, #4a2a1f 100%) !important;
+    border-top: 1px solid #5a3525;
 }
 
 body.theme-sunset .card-title {
-    color: var(--sunset-orange);
+    color: #ff6d00;
     font-weight: 700;
-    text-shadow: var(--glow-orange);
 }
 
 body.theme-sunset .card-text {
-    color: var(--text-secondary);
+    color: #ffb39d;
 }
 
 body.theme-sunset .hover-shadow:hover {
-    box-shadow: var(--shadow-xl), var(--glow-orange);
+    box-shadow:
+        0 10px 20px rgba(26, 13, 10, 0.7),
+        0 0 20px rgba(255, 109, 0, 0.3);
 }
 
 /* ============================================
-   BUTTONS - Fire Elements
+   BUTTONS
    ============================================ */
+body.theme-sunset .btn {
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
 
-/* Primary Button - Orange Glow */
 body.theme-sunset .btn-primary {
-    background: linear-gradient(135deg, var(--sunset-orange) 0%, var(--sunset-coral) 100%);
-    border: 2px solid var(--sunset-orange);
-    color: white;
-    font-weight: 700;
-    box-shadow: var(--glow-orange);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-body.theme-sunset .btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
-}
-
-body.theme-sunset .btn-primary:hover::before {
-    width: 300px;
-    height: 300px;
+    background: linear-gradient(135deg, #ff6d00 0%, #ff9100 100%);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 109, 0, 0.4);
 }
 
 body.theme-sunset .btn-primary:hover {
-    background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--sunset-orange) 100%);
-    border-color: var(--sunset-gold);
-    box-shadow: var(--glow-gold);
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, #ff9100 0%, #ffab00 100%);
+    box-shadow: 0 0 20px rgba(255, 109, 0, 0.6);
+    transform: translateY(-2px);
 }
 
-body.theme-sunset .btn-primary:active {
-    transform: translateY(0);
-}
-
-/* Secondary Button */
 body.theme-sunset .btn-secondary {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
-    border: 2px solid var(--sunset-amber);
-    color: var(--text-primary);
-    font-weight: 700;
-    box-shadow: 0 0 15px rgba(255, 145, 0, 0.4);
-    transition: all 0.3s ease;
+    background: #4a2a1f;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
 }
 
 body.theme-sunset .btn-secondary:hover {
-    background: var(--bg-quaternary);
-    border-color: var(--sunset-orange);
-    box-shadow: var(--glow-orange);
-    color: var(--sunset-orange);
+    background: #5a3525;
+    border-color: #ff6d00;
 }
 
-/* Outline Buttons */
-body.theme-sunset .btn-outline-primary {
-    color: var(--sunset-orange);
-    border: 2px solid var(--sunset-orange);
-    background: transparent;
-    font-weight: 700;
-    transition: all 0.3s ease;
-}
-
-body.theme-sunset .btn-outline-primary:hover {
-    background: var(--sunset-orange);
-    color: white;
-    box-shadow: var(--glow-orange);
-    transform: scale(1.05);
-}
-
-body.theme-sunset .btn-outline-secondary {
-    color: var(--sunset-amber);
-    border: 2px solid var(--sunset-amber);
-    background: transparent;
-    font-weight: 700;
-}
-
-body.theme-sunset .btn-outline-secondary:hover {
-    background: var(--sunset-amber);
-    color: white;
-    box-shadow: 0 0 20px rgba(255, 145, 0, 0.6);
-}
-
-body.theme-sunset .btn-outline-danger {
-    color: var(--sunset-coral);
-    border: 2px solid var(--sunset-coral);
-    background: transparent;
-    font-weight: 700;
-}
-
-body.theme-sunset .btn-outline-danger:hover {
-    background: var(--sunset-coral);
-    color: white;
-    box-shadow: var(--glow-coral);
-}
-
-body.theme-sunset .btn-outline-success {
-    color: var(--sunset-gold);
-    border: 2px solid var(--sunset-gold);
-}
-
-body.theme-sunset .btn-outline-success:hover {
-    background: var(--sunset-gold);
-    color: #1a0d0a;
-    box-shadow: var(--glow-gold);
-}
-
-/* Danger Button */
-body.theme-sunset .btn-danger {
-    background: linear-gradient(135deg, var(--sunset-coral) 0%, var(--sunset-pink) 100%);
-    border: 2px solid var(--sunset-coral);
-    font-weight: 700;
-    box-shadow: var(--glow-coral);
-}
-
-body.theme-sunset .btn-danger:hover {
-    background: linear-gradient(135deg, var(--sunset-pink) 0%, #c51162 100%);
-    box-shadow: 0 0 30px rgba(245, 0, 87, 0.6);
-}
-
-/* Success Button */
 body.theme-sunset .btn-success {
-    background: linear-gradient(135deg, var(--sunset-gold) 0%, var(--sunset-amber) 100%);
-    border: 2px solid var(--sunset-gold);
+    background: linear-gradient(135deg, #ffab00 0%, #ff9100 100%);
+    border: none;
     color: #1a0d0a;
-    font-weight: 700;
-    box-shadow: var(--glow-gold);
+    box-shadow: 0 0 10px rgba(255, 171, 0, 0.4);
 }
 
 body.theme-sunset .btn-success:hover {
-    background: linear-gradient(135deg, var(--sunset-amber) 0%, var(--sunset-orange) 100%);
-    box-shadow: var(--glow-orange);
-    color: white;
+    background: linear-gradient(135deg, #ff9100 0%, #ff6d00 100%);
+    color: #ffffff;
+}
+
+body.theme-sunset .btn-danger {
+    background: linear-gradient(135deg, #ff5252 0%, #f50057 100%);
+    border: none;
+    color: #ffffff;
+    box-shadow: 0 0 10px rgba(255, 82, 82, 0.4);
+}
+
+body.theme-sunset .btn-danger:hover {
+    background: linear-gradient(135deg, #f50057 0%, #c51162 100%);
+}
+
+/* Outline buttons */
+body.theme-sunset .btn-outline-primary {
+    color: #ff6d00;
+    border-color: #ff6d00;
+    background: transparent;
+}
+
+body.theme-sunset .btn-outline-primary:hover {
+    background: rgba(255, 109, 0, 0.15);
+    color: #ff6d00;
+    box-shadow: 0 0 15px rgba(255, 109, 0, 0.3);
+}
+
+body.theme-sunset .btn-outline-secondary {
+    color: #ff9100;
+    border-color: #ff9100;
+    background: transparent;
+}
+
+body.theme-sunset .btn-outline-secondary:hover {
+    background: rgba(255, 145, 0, 0.15);
+    color: #ff9100;
+}
+
+body.theme-sunset .btn-outline-danger {
+    color: #ff5252;
+    border-color: #ff5252;
+    background: transparent;
+}
+
+body.theme-sunset .btn-outline-danger:hover {
+    background: rgba(255, 82, 82, 0.15);
+}
+
+body.theme-sunset .btn-outline-success {
+    color: #ffab00;
+    border-color: #ffab00;
+    background: transparent;
+}
+
+body.theme-sunset .btn-outline-success:hover {
+    background: rgba(255, 171, 0, 0.15);
+}
+
+body.theme-sunset .btn-outline-info {
+    color: #7c4dff;
+    border-color: #7c4dff;
+    background: transparent;
+}
+
+body.theme-sunset .btn-outline-info:hover {
+    background: rgba(124, 77, 255, 0.15);
 }
 
 /* ============================================
-   FORMS - Warm Inputs
+   FORMS - EXPLICIT COLORS (CRITICAL)
    ============================================ */
-
 body.theme-sunset .form-control,
 body.theme-sunset .form-select {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--border-color);
-    color: var(--text-primary);
-    transition: all 0.3s ease;
-    font-weight: 500;
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+    transition: all 0.2s ease;
 }
 
 body.theme-sunset .form-control:focus,
 body.theme-sunset .form-select:focus {
-    background: var(--bg-quaternary);
-    border-color: var(--sunset-orange);
-    color: var(--text-primary);
-    box-shadow: var(--glow-orange);
+    background: #3a2218;
+    border-color: #ff6d00;
+    color: #ffe8e0;
+    box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.3);
 }
 
 body.theme-sunset .form-control::placeholder {
-    color: var(--text-tertiary);
-    font-style: italic;
+    color: #d84315;
 }
 
+/* Form Labels - EXPLICIT COLOR */
 body.theme-sunset .form-label {
-    color: var(--sunset-orange);
-    font-weight: 700;
+    color: #ffe8e0;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
 body.theme-sunset .form-text {
-    color: var(--text-tertiary);
-    font-style: italic;
+    color: #ff8a65;
 }
 
-/* Search Input */
+/* ============================================
+   NOTE TITLE - EXPLICIT COLORS
+   ============================================ */
+body.theme-sunset #note-title {
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+body.theme-sunset #note-title::placeholder {
+    color: #d84315;
+}
+
+body.theme-sunset #note-title:focus {
+    border-color: #ff6d00;
+    color: #ffe8e0;
+    box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.3);
+}
+
+/* ============================================
+   NOTE EDITOR - CRITICAL: EXPLICIT COLORS
+   ============================================ */
+body.theme-sunset #note-editor {
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+    font-family: "JetBrains Mono", "Fira Code", "SF Mono", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    padding: 1rem;
+    border-radius: 6px;
+    caret-color: #ff6d00;
+}
+
+body.theme-sunset #note-editor:focus {
+    border-color: #ff6d00;
+    color: #ffe8e0;
+    box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.3);
+}
+
+body.theme-sunset #note-editor::placeholder {
+    color: #d84315;
+}
+
+/* ============================================
+   SEARCH INPUT
+   ============================================ */
 body.theme-sunset #search-input {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--sunset-orange);
-    color: var(--text-primary);
-    border-radius: 0.5rem 0 0 0.5rem;
-    box-shadow: var(--glow-orange);
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
 }
 
 body.theme-sunset #search-input:focus {
-    border-color: var(--sunset-gold);
-    box-shadow: var(--glow-gold);
+    border-color: #ff6d00;
+    box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.3);
 }
 
 body.theme-sunset .input-group-text {
-    background: linear-gradient(135deg, var(--bg-tertiary), var(--bg-quaternary));
-    border: 2px solid var(--sunset-orange);
-    border-left: none;
-    color: var(--sunset-orange);
+    background: #4a2a1f;
+    border: 1px solid #5a3525;
+    color: #ff8a65;
 }
 
 /* ============================================
-   LIST GROUPS - Embers
+   SIDEBAR METADATA FIELDS - EXPLICIT
    ============================================ */
+body.theme-sunset #note-status,
+body.theme-sunset #note-priority,
+body.theme-sunset #note-category,
+body.theme-sunset #tag-input {
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+}
 
+body.theme-sunset #note-status:focus,
+body.theme-sunset #note-priority:focus,
+body.theme-sunset #note-category:focus,
+body.theme-sunset #tag-input:focus {
+    border-color: #ff6d00;
+    box-shadow: 0 0 0 2px rgba(255, 109, 0, 0.3);
+}
+
+body.theme-sunset #note-status option,
+body.theme-sunset #note-priority option {
+    background: #2d1a14;
+    color: #ffe8e0;
+}
+
+/* ============================================
+   FILTER FIELDS
+   ============================================ */
+body.theme-sunset #filter-status,
+body.theme-sunset #filter-priority,
+body.theme-sunset #filter-category,
+body.theme-sunset #filter-date-from,
+body.theme-sunset #filter-date-to,
+body.theme-sunset #sort-select {
+    background: #3a2218;
+    border: 1px solid #5a3525;
+    color: #ffe8e0;
+}
+
+body.theme-sunset #filter-status option,
+body.theme-sunset #filter-priority option,
+body.theme-sunset #sort-select option {
+    background: #2d1a14;
+    color: #ffe8e0;
+}
+
+/* ============================================
+   ACTION BUTTONS IN SIDEBAR
+   ============================================ */
+body.theme-sunset #duplicate-note-btn {
+    color: #ff9100;
+    border-color: #5a3525;
+}
+
+body.theme-sunset #duplicate-note-btn:hover {
+    background: #5a3525;
+    color: #ffe8e0;
+}
+
+body.theme-sunset #delete-note-btn {
+    color: #ff5252;
+    border-color: #ff5252;
+}
+
+body.theme-sunset #delete-note-btn:hover {
+    background: rgba(255, 82, 82, 0.15);
+}
+
+/* ============================================
+   LIST GROUPS
+   ============================================ */
 body.theme-sunset .list-group-item {
-    background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
-    border: 1px solid var(--border-color);
-    border-left: 3px solid var(--sunset-orange);
-    color: var(--text-primary);
-    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #2d1a14, #3a2218);
+    border: 1px solid #5a3525;
+    border-left: 3px solid #ff6d00;
+    color: #ffe8e0;
 }
 
 body.theme-sunset .list-group-item:hover {
-    background: var(--bg-tertiary);
-    border-left-color: var(--sunset-gold);
-    box-shadow: inset 5px 0 20px rgba(255, 109, 0, 0.2);
-    transform: translateX(10px);
+    background: #4a2a1f;
+    border-left-color: #ffab00;
+    box-shadow: inset 5px 0 15px rgba(255, 109, 0, 0.2);
+}
+
+body.theme-sunset .list-group-item.active {
+    background: rgba(255, 109, 0, 0.15);
+    border-color: #ff6d00;
+    color: #ff6d00;
 }
 
 body.theme-sunset .list-group-item code {
-    background: var(--bg-quaternary);
-    border: 1px solid var(--sunset-orange);
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
-    font-size: 0.9em;
-    box-shadow: inset 0 0 10px rgba(255, 109, 0, 0.2);
+    background: #4a2a1f;
+    border: 1px solid #5a3525;
+    color: #ffab00;
 }
 
 /* ============================================
-   CODE BLOCKS - Fire Terminal
+   CODE BLOCKS
    ============================================ */
-
 body.theme-sunset code {
-    background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-quaternary) 100%);
-    color: var(--sunset-gold);
-    border: 1px solid var(--sunset-orange);
-    padding: 0.3rem 0.6rem;
-    border-radius: 0.3rem;
-    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
-    font-size: 0.9em;
-    box-shadow: inset 0 0 10px rgba(255, 109, 0, 0.2), var(--glow-orange);
-    text-shadow: 0 0 5px rgba(255, 171, 0, 0.4);
+    background: #4a2a1f;
+    color: #ffab00;
+    border: 1px solid #5a3525;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-family: "JetBrains Mono", monospace;
+}
+
+body.theme-sunset pre {
+    background: #4a2a1f;
+    border: 1px solid #5a3525;
+    border-left: 4px solid #ff6d00;
+    border-radius: 6px;
+    padding: 1rem;
 }
 
 body.theme-sunset pre code {
-    display: block;
-    padding: 1.5rem;
-    overflow-x: auto;
-    border-left: 4px solid var(--sunset-orange);
-}
-
-/* ============================================
-   TEXT COLORS
-   ============================================ */
-
-body.theme-sunset .text-primary {
-    color: var(--sunset-orange) !important;
-    text-shadow: var(--glow-orange);
-}
-
-body.theme-sunset .text-secondary {
-    color: var(--text-secondary) !important;
-}
-
-body.theme-sunset .text-muted {
-    color: var(--text-muted) !important;
-}
-
-body.theme-sunset .text-success {
-    color: var(--sunset-gold) !important;
-}
-
-body.theme-sunset .text-danger {
-    color: var(--sunset-coral) !important;
-}
-
-body.theme-sunset .text-warning {
-    color: var(--sunset-amber) !important;
-}
-
-/* ============================================
-   ALERTS - Warm Notifications
-   ============================================ */
-
-body.theme-sunset .alert {
-    border: 2px solid;
-    border-radius: 0.5rem;
-    box-shadow: var(--shadow-md);
-    font-weight: 600;
-}
-
-body.theme-sunset .alert-info {
-    background: linear-gradient(135deg, #1a1a2d 0%, #2a2a3d 100%);
-    color: var(--sunset-purple);
-    border-color: var(--sunset-purple);
-    box-shadow: var(--glow-purple);
-}
-
-body.theme-sunset .alert-success {
-    background: linear-gradient(135deg, #2a1d0a 0%, #3a2d1a 100%);
-    color: var(--sunset-gold);
-    border-color: var(--sunset-gold);
-    box-shadow: var(--glow-gold);
-}
-
-body.theme-sunset .alert-warning {
-    background: linear-gradient(135deg, #2d1a0a 0%, #3d2a1a 100%);
-    color: var(--sunset-amber);
-    border-color: var(--sunset-amber);
-    box-shadow: 0 0 20px rgba(255, 145, 0, 0.3);
-}
-
-body.theme-sunset .alert-danger {
-    background: linear-gradient(135deg, #2d0a0a 0%, #3d1a1a 100%);
-    color: var(--sunset-coral);
-    border-color: var(--sunset-coral);
-    box-shadow: var(--glow-coral);
-}
-
-body.theme-sunset .alert .btn-close {
-    filter: invert(1) brightness(2);
-}
-
-/* ============================================
-   FOOTER - Evening Horizon
-   ============================================ */
-
-body.theme-sunset .footer {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%) !important;
-    border-top: 3px solid transparent;
-    border-image: linear-gradient(90deg, var(--sunset-gold), var(--sunset-orange), var(--sunset-coral)) 1;
-    color: var(--text-secondary);
-    box-shadow: var(--shadow-lg), 0 -10px 40px rgba(255, 109, 0, 0.2);
-    margin-top: 3rem;
-}
-
-body.theme-sunset .footer a {
-    color: var(--sunset-orange);
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-weight: 600;
-}
-
-body.theme-sunset .footer a:hover {
-    color: var(--sunset-gold);
-    text-shadow: var(--glow-gold);
-}
-
-/* ============================================
-   LOADING SPINNER - Fire Whirl
-   ============================================ */
-
-body.theme-sunset #loading-spinner {
-    background: rgba(36, 20, 16, 0.98);
-    backdrop-filter: blur(20px);
-    border: 2px solid var(--sunset-orange);
-    box-shadow: var(--shadow-xl), var(--glow-orange);
-}
-
-body.theme-sunset .spinner-border {
-    border: 4px solid rgba(255, 109, 0, 0.2);
-    border-right-color: var(--sunset-orange);
-    border-top-color: var(--sunset-gold);
-    animation: spinnerFire 1.2s ease-in-out infinite;
-}
-
-@keyframes spinnerFire {
-    0% {
-        border-right-color: var(--sunset-orange);
-        border-top-color: var(--sunset-gold);
-    }
-    50% {
-        border-right-color: var(--sunset-coral);
-        border-top-color: var(--sunset-orange);
-    }
-    100% {
-        border-right-color: var(--sunset-orange);
-        border-top-color: var(--sunset-gold);
-    }
-}
-
-/* ============================================
-   EMPTY STATES
-   ============================================ */
-
-body.theme-sunset #empty-state i {
-    opacity: 0.4;
-    color: var(--sunset-orange);
-    text-shadow: var(--glow-orange);
-    animation: warmPulse 3s ease-in-out infinite;
-}
-
-@keyframes warmPulse {
-    0%, 100% { transform: scale(1); opacity: 0.4; }
-    50% { transform: scale(1.08); opacity: 0.6; }
-}
-
-body.theme-sunset #empty-state h3 {
-    color: var(--sunset-orange);
-    text-shadow: var(--glow-orange);
-}
-
-body.theme-sunset #empty-state p {
-    color: var(--text-tertiary);
+    background: transparent;
+    border: none;
+    color: #ffe8e0;
 }
 
 /* ============================================
    BADGES
    ============================================ */
-
-body.theme-sunset .badge {
-    font-weight: 700;
-    padding: 0.4em 0.8em;
+body.theme-sunset .badge.bg-primary {
+    background: #ff6d00 !important;
+    color: #ffffff !important;
 }
 
-body.theme-sunset .badge-primary {
-    background: var(--sunset-orange);
-    color: white;
-    box-shadow: var(--glow-orange);
+body.theme-sunset .badge.bg-secondary {
+    background: #4a2a1f !important;
+    color: #ffb39d !important;
+    border: 1px solid #5a3525;
 }
 
-body.theme-sunset .badge-secondary {
-    background: var(--sunset-amber);
-    color: white;
-    box-shadow: 0 0 15px rgba(255, 145, 0, 0.4);
+body.theme-sunset .badge.bg-success {
+    background: #ffab00 !important;
+    color: #1a0d0a !important;
+}
+
+body.theme-sunset .badge.bg-danger {
+    background: #ff5252 !important;
+    color: #ffffff !important;
+}
+
+body.theme-sunset .badge.bg-warning {
+    background: #ff9100 !important;
+    color: #1a0d0a !important;
+}
+
+body.theme-sunset .badge.bg-info {
+    background: #7c4dff !important;
+    color: #ffffff !important;
+}
+
+body.theme-sunset .badge.bg-light {
+    background: #4a2a1f !important;
+    color: #ffe8e0 !important;
+}
+
+/* Tag badges */
+body.theme-sunset #note-tags .badge {
+    background: rgba(255, 82, 82, 0.15);
+    color: #ff5252;
+    border: 1px solid #ff5252;
+}
+
+body.theme-sunset #note-tags .badge:hover {
+    background: #ff5252;
+    color: #ffffff;
 }
 
 /* ============================================
-   TRANSITIONS & ANIMATIONS
+   ALERTS
    ============================================ */
-
-body.theme-sunset .view-container {
-    animation: twilightFade 0.8s ease;
+body.theme-sunset .alert-success {
+    background: rgba(255, 171, 0, 0.15);
+    border-color: #ffab00;
+    color: #ffab00;
 }
 
-@keyframes twilightFade {
-    0% {
+body.theme-sunset .alert-danger {
+    background: rgba(255, 82, 82, 0.15);
+    border-color: #ff5252;
+    color: #ff5252;
+}
+
+body.theme-sunset .alert-warning {
+    background: rgba(255, 145, 0, 0.15);
+    border-color: #ff9100;
+    color: #ff9100;
+}
+
+body.theme-sunset .alert-info {
+    background: rgba(124, 77, 255, 0.15);
+    border-color: #7c4dff;
+    color: #7c4dff;
+}
+
+body.theme-sunset .btn-close {
+    filter: invert(1) brightness(0.9);
+}
+
+/* ============================================
+   TEXT UTILITIES
+   ============================================ */
+body.theme-sunset .text-primary {
+    color: #ffe8e0 !important;
+}
+
+body.theme-sunset .text-secondary {
+    color: #ffb39d !important;
+}
+
+body.theme-sunset .text-muted {
+    color: #d84315 !important;
+}
+
+body.theme-sunset .text-success {
+    color: #ffab00 !important;
+}
+
+body.theme-sunset .text-danger {
+    color: #ff5252 !important;
+}
+
+body.theme-sunset .text-warning {
+    color: #ff9100 !important;
+}
+
+body.theme-sunset .text-info {
+    color: #7c4dff !important;
+}
+
+body.theme-sunset .text-dark {
+    color: #ffb39d !important;
+}
+
+/* ============================================
+   DROPDOWNS
+   ============================================ */
+body.theme-sunset .dropdown-menu {
+    background: #2d1a14;
+    border: 1px solid #5a3525;
+}
+
+body.theme-sunset .dropdown-item {
+    color: #ffe8e0;
+}
+
+body.theme-sunset .dropdown-item:hover {
+    background: #4a2a1f;
+}
+
+body.theme-sunset .dropdown-divider {
+    border-color: #5a3525;
+}
+
+/* ============================================
+   MODALS
+   ============================================ */
+body.theme-sunset .modal-content {
+    background: #2d1a14;
+    border: 1px solid #5a3525;
+}
+
+body.theme-sunset .modal-header {
+    border-bottom: 1px solid #5a3525;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .modal-title {
+    color: #ffe8e0;
+}
+
+body.theme-sunset .modal-footer {
+    border-top: 1px solid #5a3525;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+body.theme-sunset .table {
+    color: #ffe8e0;
+}
+
+body.theme-sunset .table th {
+    background: #4a2a1f;
+    border-color: #5a3525;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .table td {
+    border-color: #5a3525;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .table-striped > tbody > tr:nth-of-type(odd) {
+    background: #2d1a14;
+}
+
+body.theme-sunset .table-hover > tbody > tr:hover {
+    background: #4a2a1f;
+}
+
+/* ============================================
+   NAV TABS & PILLS
+   ============================================ */
+body.theme-sunset .nav-tabs {
+    border-color: #5a3525;
+}
+
+body.theme-sunset .nav-tabs .nav-link {
+    color: #ffb39d;
+}
+
+body.theme-sunset .nav-tabs .nav-link:hover {
+    border-color: #6d4535;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .nav-tabs .nav-link.active {
+    background: #2d1a14;
+    border-color: #5a3525 #5a3525 #2d1a14;
+    color: #ff6d00;
+}
+
+body.theme-sunset .nav-pills .nav-link {
+    color: #ffb39d;
+}
+
+body.theme-sunset .nav-pills .nav-link:hover {
+    background: #4a2a1f;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .nav-pills .nav-link.active {
+    background: #ff6d00;
+    color: #ffffff;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+body.theme-sunset .footer {
+    background: linear-gradient(135deg, #2d1a14 0%, #1a0d0a 100%) !important;
+    border-top: 2px solid #ff6d00;
+    color: #ff8a65;
+}
+
+body.theme-sunset .footer a {
+    color: #ff6d00;
+}
+
+body.theme-sunset .footer a:hover {
+    color: #ffab00;
+}
+
+/* ============================================
+   STATUS INDICATORS
+   ============================================ */
+body.theme-sunset #save-status {
+    color: #ff8a65;
+}
+
+body.theme-sunset #save-status.text-success {
+    color: #ffab00 !important;
+}
+
+body.theme-sunset #save-status.text-warning {
+    color: #ff9100 !important;
+}
+
+body.theme-sunset #word-count,
+body.theme-sunset #line-count,
+body.theme-sunset #last-modified {
+    color: #d84315;
+}
+
+/* ============================================
+   LOADING & EMPTY STATES
+   ============================================ */
+body.theme-sunset #loading-spinner {
+    background: #2d1a14;
+    border: 1px solid #5a3525;
+}
+
+body.theme-sunset .spinner-border {
+    border-color: #5a3525;
+    border-right-color: #ff6d00;
+}
+
+body.theme-sunset #empty-state i {
+    color: #d84315;
+}
+
+body.theme-sunset #empty-state h3 {
+    color: #ffe8e0;
+}
+
+body.theme-sunset #empty-state p {
+    color: #ff8a65;
+}
+
+/* ============================================
+   TAG CLOUD
+   ============================================ */
+body.theme-sunset .tag-cloud-item {
+    color: #ffb39d;
+}
+
+body.theme-sunset .tag-cloud-item:hover {
+    color: #ff6d00;
+}
+
+/* ============================================
+   SEARCH RESULTS
+   ============================================ */
+body.theme-sunset .search-result-card:hover {
+    border-color: #ff6d00;
+}
+
+body.theme-sunset .search-result-card .card-title {
+    color: #ff6d00;
+}
+
+body.theme-sunset mark,
+body.theme-sunset .highlight {
+    background: rgba(255, 171, 0, 0.2);
+    color: #ffab00;
+}
+
+/* ============================================
+   FILTER BADGES
+   ============================================ */
+body.theme-sunset [data-filter] {
+    color: #ffb39d;
+}
+
+body.theme-sunset [data-filter]:hover {
+    color: #ff6d00;
+}
+
+body.theme-sunset [data-filter].active {
+    color: #ff6d00;
+    font-weight: 600;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+body.theme-sunset .page-link {
+    background: #2d1a14;
+    border-color: #5a3525;
+    color: #ffb39d;
+}
+
+body.theme-sunset .page-link:hover {
+    background: #4a2a1f;
+    color: #ffe8e0;
+}
+
+body.theme-sunset .page-item.active .page-link {
+    background: #ff6d00;
+    border-color: #ff6d00;
+    color: #ffffff;
+}
+
+/* ============================================
+   SELECTION
+   ============================================ */
+body.theme-sunset ::selection {
+    background: #ff6d00;
+    color: #ffffff;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+body.theme-sunset .view-container {
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from {
         opacity: 0;
-        transform: translateY(30px);
-        filter: brightness(0.5);
+        transform: translateY(8px);
     }
-    60% {
-        opacity: 0.8;
-        transform: translateY(-5px);
-        filter: brightness(1.1);
-    }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
-        filter: brightness(1);
     }
 }
 
 /* ============================================
-   CATEGORY CARDS
+   RESPONSIVE
    ============================================ */
-
-body.theme-sunset .category-card {
-    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    border: 2px solid var(--sunset-amber);
-    transition: all 0.4s ease;
-}
-
-body.theme-sunset .category-card:hover {
-    border-color: var(--sunset-orange);
-    box-shadow: var(--shadow-lg), var(--glow-orange);
-    transform: scale(1.02);
-}
-
-body.theme-sunset .item-card {
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-color);
-    border-left: 3px solid var(--sunset-orange);
-    transition: all 0.3s ease;
-}
-
-body.theme-sunset .item-card:hover {
-    border-left-color: var(--sunset-gold);
-    box-shadow: inset 5px 0 15px rgba(255, 109, 0, 0.2);
-}
-
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
-
 @media (max-width: 768px) {
     body.theme-sunset .navbar-brand {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
-
-    body.theme-sunset .card {
-        margin-bottom: 1rem;
-    }
-
-    body.theme-sunset::before,
-    body.theme-sunset::after {
-        opacity: 0.5;
+    body.theme-sunset #note-editor {
+        font-size: 13px;
     }
 }
 
 /* ============================================
-   PRINT STYLES
+   PRINT
    ============================================ */
-
 @media print {
     body.theme-sunset {
         background: white;
         color: black;
     }
-
-    body.theme-sunset::before,
-    body.theme-sunset::after {
+    body.theme-sunset::before {
         display: none;
     }
-
     body.theme-sunset .navbar,
     body.theme-sunset .footer,
     body.theme-sunset .btn {
         display: none !important;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+body.theme-sunset :focus-visible {
+    outline: 2px solid #ff6d00;
+    outline-offset: 2px;
+}
+
+@media (prefers-contrast: high) {
+    body.theme-sunset {
+        --text-primary: #ffffff;
+        --text-secondary: #ffccbb;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.theme-sunset * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
     }
 }
